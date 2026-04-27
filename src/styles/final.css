@@ -1,0 +1,97 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.final-page {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: 100vh;
+  background-color: lightgrey;
+}
+
+.final-page .container {
+  display: flex;
+  flex-direction: column;
+  height: 50%;
+  width: 40%;
+  margin-left: 25%;
+}
+
+.inside {
+  margin: 15%;
+  background-color: whitesmoke;
+  text-align: center;
+  border-radius: 5%;
+  max-width: 440px;
+  min-width: 250px;
+  padding-bottom: 20px;
+}
+
+.confirmed {
+  display: flex;
+  margin: 4%;
+  margin-bottom: 0;
+  text-align: center;
+  padding-left: 5%;
+}
+
+.confirmed i {
+  font-size: 1.5rem;
+  color: green;
+  margin-right: 8px;
+}
+
+.confirmed h2 {
+  padding-left: 3%;
+}
+
+.restaurant {
+  font-size: x-large;
+}
+
+.info {
+  margin: 7%;
+  font-size: larger;
+}
+
+.info p {
+  margin-bottom: 8px;
+}
+
+.info button {
+  border-radius: 7%;
+  font-size: 100%;
+  margin-top: 5%;
+  width: 70px;
+  cursor: pointer;
+}
+
+.info button a {
+  text-decoration: none;
+  color: black;
+}
+
+.done-btn {
+  display: inline-block;
+  border-radius: 7%;
+  font-size: 100%;
+  margin-top: 5%;
+  width: 70px;
+  padding: 4px 8px;
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
+  background-color: #e8e8e8;
+  border: 1px solid #ccc;
+}
+
+@media screen and (max-width: 500px) {
+  .final-page .container {
+    width: 100%;
+    margin-left: 3%;
+  }
+}

@@ -1,0 +1,251 @@
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #242333;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  font-family: 'Lato', 'sans-serif';
+}
+
+.tables-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.contenedor {
+  background-color: burlywood;
+}
+
+.container {
+  perspective: 1000px;
+  margin-bottom: 30px;
+}
+
+.seat {
+  background-color: #444451;
+  height: 40px;
+  width: 40px;
+  margin: 20px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-spacing: 10em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.seat.busy {
+  background-color: #ff4444 !important;
+  cursor: not-allowed !important;
+  opacity: 0.7;
+  border: 2px solid #ff0000;
+}
+
+.seat.busy:hover {
+  background-color: #ff6666 !important;
+  transform: none !important;
+  cursor: not-allowed !important;
+}
+
+.seat.too-small {
+  background-color: #888888 !important;
+  cursor: not-allowed !important;
+  opacity: 0.5;
+  border: 2px solid #666666;
+}
+
+.seat.too-small:hover {
+  background-color: #999999 !important;
+  transform: none !important;
+  cursor: not-allowed !important;
+}
+
+.seat:not(.busy):not(.too-small):hover {
+  cursor: pointer;
+  transform: scale(1.2);
+  transition: transform 0.15s ease;
+}
+
+.row {
+  display: flex;
+}
+
+.screen {
+  background-color: #fff;
+  height: 70px;
+  max-width: 100%;
+  margin: 15px 0;
+  transform: rotateX(-45deg);
+  box-shadow: 0 3px 10px rgba(255, 255, 255, 0.75);
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.kitchen {
+  display: flex;
+}
+
+.wra {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.bar {
+  background-color: gray;
+  height: 255px;
+  width: 90px;
+  margin: 15px 0;
+  border-top-right-radius: 100px;
+  border-bottom-right-radius: 100px;
+  color: black;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.middle {
+  background-color: pink;
+  height: 80px;
+  width: 50px;
+  margin: 20px;
+  border-radius: 10px;
+  border-spacing: 10em;
+  color: black;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.bar-chairs {
+  height: 24px;
+  width: 24px;
+  background-color: #bbb;
+  border-radius: 50%;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 10px;
+  margin: 4px;
+}
+
+.round {
+  background-color: skyblue;
+  border-radius: 10px;
+  text-align: center;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.hodnik {
+  height: 280px;
+  width: 90px;
+  margin: 15px 0;
+}
+
+.last {
+  height: 50px;
+  width: 90px;
+  background-color: lightgreen;
+  border-radius: 10px;
+  color: black;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.entrance {
+  padding-left: 20px;
+  color: black;
+  font-weight: bold;
+  height: 40px;
+  width: 90px;
+  display: flex;
+  align-items: center;
+}
+
+.last-tables {
+  height: 40px;
+  width: 90px;
+  background-color: pink;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  color: black;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.noTable {
+  margin-top: 1%;
+  height: 60px;
+  width: 150px;
+  background-color: lightgrey;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-style: italic;
+  cursor: pointer;
+  border: none;
+  margin-bottom: 20px;
+}
+
+.noTable a {
+  text-decoration: none;
+  color: black;
+}
+
+@media screen and (max-width: 500px) {
+  .container {
+    width: 430px;
+  }
+
+  .round {
+    height: 20px;
+    margin: 10px;
+  }
+
+  .hodnik {
+    display: none;
+  }
+
+  .contenedor {
+    height: 720px;
+  }
+
+  .entrance {
+    height: 20px;
+    padding-left: 10%;
+  }
+}

@@ -1,0 +1,56 @@
+body {
+  background-color: rgb(120, 81, 9);
+}
+
+.gallery-page {
+  padding-bottom: 20px;
+}
+
+.gallery-page h1 {
+  font-style: italic;
+  text-align: center;
+  color: rgb(94, 10, 10);
+}
+
+.homeButton {
+  display: inline-block;
+  color: rgb(94, 9, 10);
+  background-color: transparent;
+  border: 1px solid #6c757d;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  cursor: pointer;
+  padding: 4px 8px;
+  font-size: large;
+  margin: 8px;
+}
+
+.homeButton:hover,
+.homeButton:active {
+  background-color: #6c757d;
+  border-color: #6c757d;
+  color: white;
+}
+
+.homeButton a {
+  text-decoration: none;
+  color: inherit;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.gallery-grid {
+  padding-left: 12%;
+}
+
+.gallery-grid img {
+  width: 200px;
+  margin: 4px;
+  border-radius: 4px;
+}
+
+@media screen and (max-width: 600px) {
+  .gallery-grid img {
+    width: 50%;
+  }
+}

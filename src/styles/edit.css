@@ -1,0 +1,70 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: rgb(240, 237, 237);
+}
+
+.edit-page {
+  min-height: 100vh;
+  background-color: rgb(240, 237, 237);
+}
+
+.edit-page .container {
+  position: relative;
+  max-width: 400px;
+  width: 100%;
+  background: #fff;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(10, 10, 10, 0.1);
+  margin: 5% auto 5% 37%;
+}
+
+.edit-page header {
+  font-size: large;
+  margin-bottom: 4%;
+  text-align: center;
+  font-weight: bold;
+  margin-top: 5%;
+}
+
+.edit-page form {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.edit-page input {
+  width: 60%;
+  text-align: center;
+  margin-bottom: 2%;
+  height: 25px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 0 8px;
+}
+
+.edit-page button {
+  width: 25%;
+  height: 40px;
+  cursor: pointer;
+}
+
+.edit-error {
+  color: red;
+  text-align: center;
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
+
+@media screen and (max-width: 600px) {
+  .edit-page .container {
+    margin: 5% auto;
+    width: 90%;
+  }
+}

@@ -1,0 +1,51 @@
+body {
+  background-color: rgb(252, 248, 248);
+}
+
+.location-page {
+  padding: 20px;
+}
+
+.location-page h1 {
+  font-style: italic;
+  text-align: center;
+  color: rgb(94, 10, 10);
+  margin: 16px 0 8px;
+}
+
+.location-page p {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.location-page iframe {
+  display: block;
+  margin: auto;
+  width: 100%;
+  max-width: 600px;
+  height: 450px;
+  border: 0;
+}
+
+.btn-outline {
+  background-color: transparent;
+  border: 1px solid #6c757d;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  color: #6c757d;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+.btn-outline:hover {
+  background-color: #a2aab0;
+  border-color: #a2aab0;
+  color: white;
+}
+
+.btn-outline a {
+  text-decoration: none;
+  color: inherit;
+  font-family: 'Times New Roman', Times, serif;
+}
