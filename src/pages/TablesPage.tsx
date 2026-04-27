@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 import { useNavigate, useLocation, useParams, Link } from 'react-router-dom'
 import type { CreateReservationResponse, FinalPageState } from '../types'
-import { fetchBusyTables, assignTable, fetchReservationById } from '../services/api'
+import { fetchBusyTables, assignTable, fetchReservationById, sendEmailConfirmation } from '../services/api'
+
 import '../styles/tables.css'
 
 const ALL_TABLES = {
@@ -94,9 +95,51 @@ export default function TablesPage() {
           partySize: reservation.partySize,
           table: tableNum,
         }
+
+        // Send email confirmation
+        try {
+          await sendEmailConfirmation(reservation.reservationId)
+          console.log('✅ Email confirmation sent')
+        } catch (emailError) {
+          console.error('⚠️ Failed to send email confirmation:', emailError)
+          // Don't block navigation if email fails
+        }
+
         navigate('/final', { state: finalState })
       }
     } catch {
+      alert('Something went wrong. Please try again.')
+    }
+  }
+
+  async function handleNoTablePreference() {
+    if (!reservation) return
+
+    try {
+      // Save 'none' as table preference
+      await assignTable('none', reservation.reservationId)
+      
+      // Send email confirmation
+      try {
+        await sendEmailConfirmation(reservation.reservationId)
+        console.log('✅ Email confirmation sent')
+      } catch (emailError) {
+        console.error('⚠️ Failed to send email confirmation:', emailError)
+        // Don't block navigation if email fails
+      }
+
+      const finalState: FinalPageState = {
+        name: reservation.name,
+        id: reservation.reservationId,
+        date: reservation.date,
+        hour: reservation.hour,
+        partySize: reservation.partySize,
+        table: 'none',
+      }
+
+      navigate('/final', { state: finalState })
+    } catch (error) {
+      console.error('Failed to save no-table preference:', error)
       alert('Something went wrong. Please try again.')
     }
   }
@@ -233,10 +276,8 @@ export default function TablesPage() {
         </div>
       </div>
 
-      <button className="noTable">
-        <Link to="/final" state={{ name: reservation.name, id: reservation.reservationId, date: reservation.date, hour: reservation.hour, partySize: reservation.partySize, table: 'none' } satisfies FinalPageState}>
-          NO TABLE PREFERENCE
-        </Link>
+      <button className="noTable" onClick={handleNoTablePreference}>
+        NO TABLE PREFERENCE
       </button>
     </div>
   )

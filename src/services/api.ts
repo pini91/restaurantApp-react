@@ -96,3 +96,12 @@ export async function deleteReservation(reservationId: string): Promise<void> {
   })
   if (!res.ok) throw new Error('Failed to delete reservation')
 }
+
+export async function sendEmailConfirmation(reservationId: string): Promise<void> {
+  const res = await fetch(`${API_BASE}/email/sendConfirmation`, {
+    method: 'POST',
+    ...defaultOptions,
+    body: JSON.stringify({ reservationId }),
+  })
+  if (!res.ok) throw new Error('Failed to send email confirmation')
+}
