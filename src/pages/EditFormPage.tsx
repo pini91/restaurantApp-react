@@ -14,8 +14,25 @@ function getMaxDateStr() {
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
 }
 
-const HOURS = ['12:00', '01:00', '02:00', '03:00', '04:00', '05:00', '06:00',
-  '07:00', '08:00', '09:00', '10:00', '11:00']
+function buildHours(selectedDate: string): string[] {
+  const todayStr = getTodayStr()
+  const restaurantStart = 12
+  const restaurantEnd = 23
+  const hours: string[] = []
+
+  const startHour =
+    selectedDate === todayStr
+      ? Math.max(restaurantStart, new Date().getHours() + 1)
+      : restaurantStart
+
+  for (let i = startHour; i <= restaurantEnd; i++) {
+    const hour12 = i % 12 === 0 ? 12 : i % 12
+    const ampm = i < 12 ? 'AM' : 'PM'
+    hours.push(`${String(hour12).padStart(2, '0')}:00 ${ampm}`)
+  }
+
+  return hours
+}
 
 export default function EditFormPage() {
   const location = useLocation()
@@ -28,6 +45,7 @@ export default function EditFormPage() {
   const [date, setDate] = useState(state?.date ?? today)
   const [hours, setHours] = useState(state?.hour ?? '')
   const [partySize, setPartySize] = useState(String(state?.partySize ?? ''))
+  const availableHours = buildHours(date)
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
 
@@ -45,8 +63,14 @@ export default function EditFormPage() {
     setLoading(true)
     try {
       await updateReservation(state!.id, { date, hours, partySize })
-      navigate('/final', {
-        state: { ...state, date, hour: hours, partySize: Number(partySize) },
+      navigate(`/tables/${state!.id}`, {
+        state: {
+          reservationId: state!.id,
+          name: state!.name,
+          date,
+          hour: hours,
+          partySize: Number(partySize),
+        },
       })
     } catch {
       setError('Failed to update reservation. Please try again.')
@@ -69,7 +93,7 @@ export default function EditFormPage() {
               min={today}
               max={maxDate}
               value={date}
-              onChange={(e) => setDate(e.target.value)}
+              onChange={(e) => { setDate(e.target.value); setHours('') }}
               required
             />
           </div>
@@ -86,7 +110,7 @@ export default function EditFormPage() {
               <option value="" disabled>
                 Hour
               </option>
-              {HOURS.map((h) => (
+              {availableHours.map((h) => (
                 <option key={h} value={h}>
                   {h}
                 </option>

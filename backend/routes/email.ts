@@ -15,12 +15,12 @@ router.post('/sendConfirmation', async (req: Request, res: Response) => {
     const reservation = await Reservation.findById(reservationId)
     
     if (!reservation) {
-      console.log('❌ Reservation not found:', reservationId)
+      console.log('Reservation not found:', reservationId)
       res.status(404).json({ error: 'Reservation not found' })
       return
     }
     
-    console.log('📋 Reservation found:', {
+    console.log('Reservation found:', {
       name: reservation.name,
       email: reservation.email,
       date: reservation.date,
@@ -85,10 +85,10 @@ Health and Taste Restaurant`,
       `,
     })
     
-    console.log('✅ Email sent successfully:', emailData)
+    console.log('Email sent successfully:', emailData)
     res.json({ status: 'success', messageId: emailData.id })
   } catch (error) {
-    console.error('❌ EMAIL ERROR:', error)
+    console.error('EMAIL ERROR:', error)
     res.status(500).json({ error: 'Failed to send email' })
   }
 })

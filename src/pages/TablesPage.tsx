@@ -99,9 +99,9 @@ export default function TablesPage() {
         // Send email confirmation
         try {
           await sendEmailConfirmation(reservation.reservationId)
-          console.log('✅ Email confirmation sent')
+          console.log('Email confirmation sent')
         } catch (emailError) {
-          console.error('⚠️ Failed to send email confirmation:', emailError)
+          console.error('Failed to send email confirmation:', emailError)
           // Don't block navigation if email fails
         }
 
@@ -257,7 +257,11 @@ export default function TablesPage() {
           {/* Fixed/entrance seats (non-selectable) */}
           <div className="row">
             {ALL_TABLES.lastFixed.map((t) => (
-              <div key={t} className="seat last">
+              <div
+                key={t} 
+                className={`seat last${seatClass(t)} round`}
+                onClick={() => handleTableClick(t)}
+              >
                 {t}
               </div>
             ))}
@@ -268,8 +272,14 @@ export default function TablesPage() {
           {/* Last tables row */}
           <div className="row">
             {ALL_TABLES.lastTables.map((t) => (
-              <div key={t} className="seat last-tables">
-                {t}
+              <div 
+                key={t}
+                className={`${seatClass(t)} last-tables`}
+                onClick={() => handleTableClick(t)}
+
+              // className="seat last-tables"
+              >
+              {t}
               </div>
             ))}
           </div>
