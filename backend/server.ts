@@ -9,6 +9,7 @@ import morgan from 'morgan'
 import cors from 'cors'
 import { connectDB } from './config/db'
 import configurePassport from './config/passport'
+import User from './models/User'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import routes from './routes/index'
@@ -16,11 +17,32 @@ import routes from './routes/index'
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 
-// Connect to MongoDB
-connectDB().catch((err) => {
-  console.error('Failed to connect to MongoDB:', err)
-  process.exit(1)
-})
+// Seed admin user from env vars if one doesn't exist yet
+async function seedAdmin() {
+  const adminEmail = process.env.ADMIN_EMAIL
+  const adminPassword = process.env.ADMIN_PASSWORD
+  if (!adminEmail || !adminPassword) {
+    console.log('⚠️  ADMIN_EMAIL / ADMIN_PASSWORD not set — skipping admin seed')
+    return
+  }
+  const existing = await User.findOne({ email: adminEmail.toLowerCase() })
+  if (!existing) {
+    await User.create({ email: adminEmail, password: adminPassword, isAdmin: true })
+    console.log(` Admin user created: ${adminEmail}`)
+  } else if (!existing.isAdmin) {
+    existing.isAdmin = true
+    await existing.save()
+    console.log(` Existing user promoted to admin: ${adminEmail}`)
+  }
+}
+
+// Connect to MongoDB then seed admin
+connectDB()
+  .then(() => seedAdmin())
+  .catch((err) => {
+    console.error('Failed to connect to MongoDB:', err)
+    process.exit(1)
+  })
 
 // Configure Passport
 configurePassport(passport)

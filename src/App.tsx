@@ -12,6 +12,8 @@ import FinalPage from './pages/FinalPage'
 import EditPage from './pages/EditPage'
 import EditFormPage from './pages/EditFormPage'
 import FinalEditPage from './pages/FinalEditPage'
+import AdminLoginPage from './pages/AdminLoginPage'
+import AdminDashboardPage from './pages/AdminDashboardPage'
 
 export default function App() {
   return (
@@ -30,6 +32,8 @@ export default function App() {
         <Route path="/edit" element={<EditPage />} />
         <Route path="/editForm" element={<EditFormPage />} />
         <Route path="/finalEdit" element={<FinalEditPage />} />
+        <Route path="/admin" element={<AdminLoginPage />} />
+        <Route path="/admin/dashboard" element={<AdminDashboardPage />} />
       </Routes>
     </BrowserRouter>
   )

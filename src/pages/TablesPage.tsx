@@ -122,9 +122,9 @@ export default function TablesPage() {
       // Send email confirmation
       try {
         await sendEmailConfirmation(reservation.reservationId)
-        console.log('✅ Email confirmation sent')
+        console.log(' Email confirmation sent')
       } catch (emailError) {
-        console.error('⚠️ Failed to send email confirmation:', emailError)
+        console.error(' Failed to send email confirmation:', emailError)
         // Don't block navigation if email fails
       }
 

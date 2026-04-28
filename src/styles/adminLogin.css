@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.admin-login-page {
+  min-height: 100vh;
+  background-color: rgb(240, 237, 237);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Flash-style alerts at the top */
+.alert {
+  width: 100%;
+  padding: 12px 20px;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+.alert-danger {
+  background-color: #f8d7da;
+  color: #842029;
+  border-bottom: 1px solid #f5c2c7;
+}
+
+/* Card */
+.admin-login-container {
+  position: relative;
+  max-width: 400px;
+  width: 100%;
+  background: #fff;
+  padding: 30px 25px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(10, 10, 10, 0.1);
+  margin: 8% auto 0;
+}
+
+.admin-login-container header {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+/* Form */
+.admin-login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.admin-input {
+  height: 50px;
+  width: 100%;
+  outline: none;
+  font-size: 1rem;
+  color: #707070;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 0 15px;
+  transition: border-color 0.2s;
+}
+
+.admin-input:focus {
+  border-color: rgb(130, 106, 251);
+  box-shadow: 0 1px 0 rgba(130, 106, 251, 0.15);
+}
+
+/* Round top corners only for the first input (mirrors the original .top class) */
+.admin-input.top {
+  border-radius: 6px 6px 6px 6px;
+}
+
+.admin-submit {
+  height: 50px;
+  width: 100%;
+  background: rgb(130, 106, 251);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 6px;
+  transition: background 0.2s ease;
+}
+
+.admin-submit:hover:not(:disabled) {
+  background: rgb(88, 56, 250);
+}
+
+.admin-submit:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+@media screen and (max-width: 600px) {
+  .admin-login-container {
+    margin: 10% 5% 0;
+    width: 90%;
+  }
+}

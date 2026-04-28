@@ -42,7 +42,7 @@ router.post('/createReservation', async (req: Request, res: Response) => {
       partySize: reservation.partySize,
     })
   } catch (err) {
-    console.error('❌ CREATE RESERVATION ERROR:', err)
+    console.error(' CREATE RESERVATION ERROR:', err)
     res.status(500).json({ error: 'Failed to create reservation' })
   }
 })
@@ -56,10 +56,10 @@ router.get('/busyTables', async (req: Request, res: Response) => {
     const reservations = await Reservation.find({ date, hour, table: { $exists: true, $ne: null } })
     const busyTables = reservations.map((r) => r.table).filter(Boolean)
     
-    console.log('📊 Busy tables found:', busyTables)
+    console.log('Busy tables found:', busyTables)
     res.json(busyTables)
   } catch (err) {
-    console.error('❌ FETCH BUSY TABLES ERROR:', err)
+    console.error('FETCH BUSY TABLES ERROR:', err)
     res.status(500).json({ error: 'Failed to fetch busy tables' })
   }
 })
@@ -73,7 +73,7 @@ router.put('/assignTable', async (req: Request, res: Response) => {
     const reservation = await Reservation.findById(reservationId)
     
     if (!reservation) {
-      console.log('❌ Reservation not found for ID:', reservationId)
+      console.log(' Reservation not found for ID:', reservationId)
       res.status(404).json({ status: 'failed' })
       return
     }
@@ -87,14 +87,14 @@ router.put('/assignTable', async (req: Request, res: Response) => {
     reservation.table = tableNumFromJSFile
     await reservation.save()
     
-    console.log('✅ Table assigned successfully:', {
+    console.log(' Table assigned successfully:', {
       reservationId: reservation._id,
       assignedTable: reservation.table,
     })
     
     res.json({ status: 'success' })
   } catch (err) {
-    console.error('❌ ASSIGN TABLE ERROR:', err)
+    console.error(' ASSIGN TABLE ERROR:', err)
     res.status(500).json({ status: 'failed' })
   }
 })
@@ -107,12 +107,12 @@ router.get('/reservation/:id', async (req: Request, res: Response) => {
     const reservation = await Reservation.findById(req.params.id)
     
     if (!reservation) {
-      console.log('❌ Reservation not found for ID:', req.params.id)
+      console.log(' Reservation not found for ID:', req.params.id)
       res.status(404).json({ error: 'Reservation not found' })
       return
     }
     
-    console.log('✅ Reservation found:', {
+    console.log('Reservation found:', {
       _id: reservation._id,
       name: reservation.name,
       date: reservation.date,
@@ -129,7 +129,7 @@ router.get('/reservation/:id', async (req: Request, res: Response) => {
       partySize: reservation.partySize,
     })
   } catch (err) {
-    console.error('❌ FETCH RESERVATION ERROR:', err)
+    console.error(' FETCH RESERVATION ERROR:', err)
     res.status(500).json({ error: 'Reservation not found' })
   }
 })

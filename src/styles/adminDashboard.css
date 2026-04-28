@@ -1,0 +1,331 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.admin-db {
+  min-height: 100vh;
+  background-color: rgb(240, 237, 237);
+}
+
+/* ── Header ── */
+.admin-db-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 40px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.admin-db-header h1 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.admin-db-logout {
+  padding: 8px 22px;
+  background: rgb(130, 106, 251);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.admin-db-logout:hover {
+  background: rgb(88, 56, 250);
+}
+
+/* ── Error banner ── */
+.admin-db-error {
+  color: #842029;
+  background: #f8d7da;
+  padding: 10px 40px;
+  font-size: 0.9rem;
+}
+
+/* ── Main content ── */
+.admin-db-main {
+  padding: 30px 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-db-main h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.admin-db-empty {
+  color: #666;
+  font-size: 0.95rem;
+}
+
+/* ── Table ── */
+.admin-db-table-wrapper {
+  overflow-x: auto;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(10, 10, 10, 0.08);
+}
+
+.admin-db-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+}
+
+.admin-db-table thead tr {
+  background: rgb(130, 106, 251);
+}
+
+.admin-db-table th {
+  padding: 12px 16px;
+  text-align: left;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.admin-db-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 0.88rem;
+  color: #444;
+  white-space: nowrap;
+}
+
+.admin-db-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.admin-db-table tbody tr:hover td {
+  background-color: #fafafa;
+}
+
+/* ── Edit button ── */
+.admin-db-edit {
+  padding: 5px 14px;
+  background: rgb(130, 106, 251);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-right: 6px;
+}
+
+.admin-db-edit:hover {
+  background: rgb(88, 56, 250);
+}
+
+/* ── Delete button ── */
+.admin-db-delete {
+  padding: 5px 14px;
+  background: #dc3545;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.admin-db-delete:hover {
+  background: #bb2d3b;
+}
+
+/* ── Loading state ── */
+.admin-db-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-size: 1rem;
+  color: #666;
+}
+
+/* ── Date filter bar ── */
+.admin-db-filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.admin-db-filter-btn {
+  padding: 7px 18px;
+  background: rgb(130, 106, 251);
+  color: #fff;
+  border: 1px solid rgb(130, 106, 251);
+  border-radius: 6px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.admin-db-filter-btn:hover {
+  background: rgb(88, 56, 250);
+  border-color: rgb(88, 56, 250);
+  color: #fff;
+}
+
+.admin-db-filter-btn.active {
+  background: rgb(88, 56, 250);
+  color: #fff;
+  border-color: rgb(88, 56, 250);
+}
+
+.admin-db-date-input {
+  padding: 6px 10px;
+  background: rgb(130, 106, 251);
+  border: 1px solid rgb(130, 106, 251);
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  cursor: pointer;
+}
+
+.admin-db-date-input:focus {
+  outline: none;
+  border-color: rgb(88, 56, 250);
+}
+
+/* ── Responsive ── */
+@media screen and (max-width: 768px) {
+  .admin-db-header {
+    padding: 16px 20px;
+  }
+
+  .admin-db-main {
+    padding: 20px;
+  }
+
+  .admin-db-error {
+    padding: 10px 20px;
+  }
+}
+
+/* ── Edit modal ── */
+.admin-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.admin-modal {
+  background: #fff;
+  border-radius: 10px;
+  padding: 30px;
+  width: 100%;
+  max-width: 440px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.admin-modal h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.admin-modal label {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #555;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.admin-modal input,
+.admin-modal select {
+  height: 40px;
+  padding: 0 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.admin-modal input:focus,
+.admin-modal select:focus {
+  border-color: rgb(130, 106, 251);
+}
+
+.admin-modal-error {
+  color: #842029;
+  background: #f8d7da;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+
+.admin-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.admin-modal-cancel {
+  padding: 8px 20px;
+  background: #fff;
+  color: #555;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+.admin-modal-cancel:hover {
+  border-color: #aaa;
+}
+
+.admin-modal-save {
+  padding: 8px 20px;
+  background: rgb(130, 106, 251);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.admin-modal-save:hover:not(:disabled) {
+  background: rgb(88, 56, 250);
+}
+
+.admin-modal-save:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}

@@ -4,12 +4,14 @@ import bcrypt from 'bcrypt'
 export interface IUser extends Document {
   email: string
   password: string
+  isAdmin: boolean
   comparePassword(candidatePassword: string, cb: (err: Error | null, isMatch: boolean) => void): void
 }
 
 const UserSchema = new Schema<IUser>({
   email: { type: String, required: true, unique: true, lowercase: true },
   password: { type: String, required: true },
+  isAdmin: { type: Boolean, default: false },
 })
 
 UserSchema.pre('save', async function () {
