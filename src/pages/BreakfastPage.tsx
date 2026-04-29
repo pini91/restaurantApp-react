@@ -39,9 +39,9 @@ export default function BreakfastPage() {
   return (
     <>
     <div>
-        {/* <button className={styles.menuButton}> */}
-        <Link className={styles.home}to="/menu">Go back</Link>
-      {/* </button> */}
+      <Link to="/menu" className="homeButton">
+          <i className="fa-solid fa-arrow-left" /> Back
+      </Link>
       <h2 className={styles.title}>Breakfast</h2>
 
       <div className={styles.row}>

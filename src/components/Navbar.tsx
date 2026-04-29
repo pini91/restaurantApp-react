@@ -20,12 +20,12 @@ export default function Navbar() {
       <ul className={`nav${menuOpen ? ' open' : ''}`}>
         <li className="navList">
           <Link to="/menu" onClick={() => setMenuOpen(false)}>
-            Menu |
+            Menu 
           </Link>
         </li>
         <li className="navList">
           <Link to="/gallery" onClick={() => setMenuOpen(false)}>
-            Gallery |
+            Gallery 
           </Link>
         </li>
         <li className="navList">

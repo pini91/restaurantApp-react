@@ -1,47 +1,36 @@
 import { Link } from 'react-router-dom'
-import menu from '../assets/imgs/menu.jpg'
+import '../styles/menu.css'
+import breakfastImg from '../assets/imgs/breakfast/avocado-Toast.jpg'
+import lunchImg     from '../assets/imgs/lunch/beef.jpg'
+import dinnerImg    from '../assets/imgs/dinner/king-salmon.jpg'
+
+const MENU_ITEMS = [
+  { to: '/breakfast', label: 'Breakfast', img: breakfastImg },
+  { to: '/lunch',     label: 'Lunch',     img: lunchImg     },
+  { to: '/dinner',    label: 'Dinner',    img: dinnerImg    },
+] as const
 
 export default function MenuPage() {
   return (
-    <div style={{
-        display: 'flex',
-        justifyContent: 'center',
-        // alignItems: 'center',
-        // minHeight: '100vh',
-        // width: '100vw',
-        background:' #fff',
-        padding: '15px',
-        borderRadius: '8px',
-        boxShadow: '0 0 15px rgba(0, 0, 0, 0.1)',
-        // marginLeft: '40%',
-        marginTop: '5%',
-    }}
-    >
-        <div className="anchors" style={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 35,
-            justifyContent: 'center',
-            alignItems: 'center',
-            backgroundImage: `url(${menu})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            width: '60vw',
-            height: '60vh',
-            margin: 0,
-            padding: 0,
-        }}
-        >
-        <Link to="/breakfast" >
-            Breakfast
+    <div className="menu-page">
+      <div className="menu-header">
+        <Link to="/" className="homeButton">
+          <i className="fa-solid fa-arrow-left" /> Back
         </Link>
-        <Link to="/lunch" >
-            Lunch
-        </Link>
-        <Link to="/dinner">
-            Dinner
-        </Link>
-        </div>
+        <h1>Our Menu</h1>
+      </div>
+
+      <div className="menu-grid">
+        {MENU_ITEMS.map(({ to, label, img }) => (
+          <Link key={to} to={to} className="menu-card">
+            <img src={img} alt={label} loading="lazy" />
+            <div className="menu-card-overlay">
+              <span className="menu-card-label">{label}</span>
+            </div>
+          </Link>
+        ))}
+      </div>
     </div>
   )
 }
+

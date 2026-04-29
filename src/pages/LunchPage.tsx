@@ -38,9 +38,9 @@ export default function LunchPage() {
   return (
     <>
     <div>
-      {/* <button className={styles.menuButton}> */}
-        <Link to="/menu">HOME</Link>
-      {/* </button> */}
+      <Link to="/menu" className="homeButton">
+          <i className="fa-solid fa-arrow-left" /> Back
+      </Link>
       <h2 className={styles.title}>Lunch</h2>
 
       <div className={styles.row}>

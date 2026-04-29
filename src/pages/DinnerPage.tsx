@@ -37,9 +37,9 @@ export default function DinnerPage() {
   return (
     <>
     <div>
-        {/* <button className={styles.menuButton}> */}
-        <Link className={styles.home}to="/menu">HOME</Link>
-        {/* </button> */}
+      <Link to="/menu" className="homeButton">
+          <i className="fa-solid fa-arrow-left" /> Back
+      </Link>
       <h2 className={styles.title}>Dinner</h2>
 
       <div className={styles.row}>

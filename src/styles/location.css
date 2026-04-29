@@ -3,49 +3,112 @@ body {
 }
 
 .location-page {
-  padding: 20px;
+  min-height: 100vh;
+  padding-bottom: 2rem;
+}
+
+/* ── Header ─────────────────────────────────────────── */
+.location-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem 2rem 0.5rem;
+}
+
+.location-header .homeButton {
+  position: absolute;
+  left: 2rem;
 }
 
 .location-page h1 {
-  font-style: italic;
-  text-align: center;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  font-style: normal;
   color: rgb(94, 10, 10);
-  margin: 16px 0 8px;
+  margin: 0;
 }
 
-.location-page p {
-  text-align: center;
-  margin-bottom: 16px;
-}
-
-.location-page iframe {
-  display: block;
-  margin: auto;
-  width: 100%;
-  max-width: 600px;
-  height: 450px;
-  border: 0;
-}
-
-.btn-outline {
+/* ── Back button — identical to GalleryPage ─────────── */
+.homeButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 1rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  font-family: 'Inter', system-ui, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgb(94, 10, 10);
   background-color: transparent;
-  border: 1px solid #6c757d;
-  border-radius: 0.25rem;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  color: #6c757d;
-  cursor: pointer;
-  padding: 4px 8px;
+  border: 1.5px solid rgba(94, 10, 10, 0.35);
+  border-radius: 2rem;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
-.btn-outline:hover {
-  background-color: #a2aab0;
-  border-color: #a2aab0;
+.homeButton:hover,
+.homeButton:focus-visible {
+  background-color: rgb(94, 10, 10);
+  border-color: rgb(94, 10, 10);
   color: white;
 }
 
-.btn-outline a {
-  text-decoration: none;
-  color: inherit;
-  font-family: 'Times New Roman', Times, serif;
+/* ── Body ───────────────────────────────────────────── */
+.location-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.5rem 2rem;
+}
+
+.location-info {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.location-icon {
+  color: rgb(94, 10, 10);
+  font-size: 1.1rem;
+}
+
+.location-address {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.95rem;
+  color: #4a4a4a;
+  margin: 0;
+}
+
+.location-map-img {
+  width: 100%;
+  max-width: 720px;
+  height: 460px;
+  border: 0;
+  border-radius: 0.75rem;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.10);
+  display: block;
+  object-fit: cover;
+}
+
+/* ── Responsive ─────────────────────────────────────── */
+@media (max-width: 575px) {
+  .location-header {
+    padding: 1rem 1rem 0.5rem;
+  }
+
+  .location-header .homeButton {
+    left: 1rem;
+  }
+
+  .location-body {
+    padding: 1rem;
+  }
+
+  .location-map-img {
+    height: 300px;
+  }
 }
