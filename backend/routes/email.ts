@@ -38,6 +38,10 @@ router.post('/sendConfirmation', async (req: Request, res: Response) => {
     const capitalizedName = 
       reservation.name.charAt(0).toUpperCase() + 
       reservation.name.slice(1).toLowerCase()
+
+    const baseUrl = process.env.APP_URL || 'https://health-and-taste.up.railway.app'
+    // const magicLink = `${baseUrl}/edit/${reservation._id}` UNCOMMENT THIS ON PRODUCTION
+    const magicLink = `http://localhost:5174/edit/${reservation._id}`
     
     // Send email
     const emailData = await mg.messages.create('brenda-app.dev', {
@@ -53,10 +57,9 @@ Reservation Details:
 - Time: ${reservation.hour}
 - Table: ${reservation.table || 'No preference'}
 - Party Size: ${reservation.partySize}
-- Confirmation Number: ${reservation._id}
 
-To edit or delete your reservation, visit:
-https://health-and-taste.up.railway.app/edit
+To manage your reservation (edit or cancel), use your personal link:
+${magicLink}
 
 We look forward to seeing you!
 
@@ -73,11 +76,16 @@ Health and Taste Restaurant`,
             <p><strong>Time:</strong> ${reservation.hour}</p>
             <p><strong>Table:</strong> ${reservation.table || 'No preference'}</p>
             <p><strong>Party Size:</strong> ${reservation.partySize}</p>
-            <p><strong>Confirmation Number:</strong> ${reservation._id}</p>
           </div>
           
-          <p>To edit or delete your reservation, visit:<br>
-          <a href="https://health-and-taste.up.railway.app/edit">https://health-and-taste.up.railway.app/edit</a></p>
+          <p>To manage your reservation, use your personal link:</p>
+          <p style="margin: 16px 0;">
+            <a href="${magicLink}"
+               style="display:inline-block; background:#1F3A2E; color:#fff; padding:12px 28px; border-radius:24px; text-decoration:none; font-weight:600; font-size:14px;">
+              Manage My Reservation
+            </a>
+          </p>
+          <p style="color:#aaa; font-size:12px;">Or copy this link: <a href="${magicLink}" style="color:#aaa;">${magicLink}</a></p>
           
           <p>We look forward to seeing you!</p>
           <p style="color: #888; font-size: 12px; margin-top: 30px;">Health and Taste Restaurant</p>

@@ -30,6 +30,7 @@ export default function App() {
         <Route path="/tables/:reservationId?" element={<TablesPage />} />
         <Route path="/final" element={<FinalPage />} />
         <Route path="/edit" element={<EditPage />} />
+        <Route path="/edit/:reservationId" element={<EditPage />} />
         <Route path="/editForm" element={<EditFormPage />} />
         <Route path="/finalEdit" element={<FinalEditPage />} />
         <Route path="/admin" element={<AdminLoginPage />} />

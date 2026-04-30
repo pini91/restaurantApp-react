@@ -1,11 +1,12 @@
 import { useState } from 'react'
-import { useNavigate, Link } from 'react-router-dom'
+import { useNavigate, useParams, Link } from 'react-router-dom'
 import { lookupReservation, deleteReservation } from '../services/api'
 import '../styles/edit.css'
 
 export default function EditPage() {
   const navigate = useNavigate()
-  const [reservationId, setReservationId] = useState('')
+  const { reservationId: urlId } = useParams<{ reservationId?: string }>()
+  const [reservationId, setReservationId] = useState(urlId ?? '')
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
 
