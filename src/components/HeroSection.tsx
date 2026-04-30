@@ -10,7 +10,7 @@ import seaFoodImg from '../assets/imgs/homePage/sea-food.jpg'
 export default function HeroSection() {
   return (
     <section className="hero-section pt-5">
-      {/* Decorative leaves — purely atmospheric, hidden on mobile */}
+      {/* Decorative leaves. Purely atmospheric, hidden on mobile */}
       <span className="hero-leaf hero-leaf--left" aria-hidden="true">
         <i className="fa-solid fa-leaf" />
       </span>
@@ -18,7 +18,7 @@ export default function HeroSection() {
         <i className="fa-solid fa-leaf" />
       </span>
 
-      {/* Content block — container handles centering on all screen sizes */}
+      {/* Content block. Container handles centering on all screen sizes */}
       <div className="container-xxl text-center mt-5 pt-4 pt-md-5 position-relative px-4">
         <p className="hero-eyebrow mb-4">Premium Culinary Experience</p>
 
@@ -36,7 +36,7 @@ export default function HeroSection() {
         </Link>
       </div>
 
-      {/* Oversized platter — positioned to overlap the section below */}
+      {/* Oversized platter. Positioned to overlap the section below */}
       <div className="hero-platter-wrap">
         <img
           src={seaFoodImg}

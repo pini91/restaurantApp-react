@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import type { ReservationFormData } from '../types'
 import { createReservation } from '../services/api'
 import '../styles/form.css'
@@ -89,114 +89,150 @@ export default function ReservationFormPage() {
   }
 
   return (
-    <section className="container">
-      <header>Make a reservation</header>
-      <form className="form" onSubmit={handleSubmit}>
-        <div className="input-box">
-          <label htmlFor="name">Name</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            placeholder="Enter name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-          />
-        </div>
+    <div className="resv-page">
 
-        <div className="input-box">
-          <label htmlFor="email">Email</label>
-          <input
-            type="text"
-            id="email"
-            name="email"
-            placeholder="Enter Email"
-            value={formData.email}
-            onChange={handleChange}
-          />
+      {/* Left panel / brand imagery */}
+      <div className="resv-page__panel" aria-hidden="true">
+        <div className="resv-page__panel-overlay" />
+        <div className="resv-page__panel-content">
+          <Link to="/" className="resv-page__logo">Health &amp; Taste</Link>
+          <blockquote className="resv-page__quote">
+            &ldquo;Every great meal begins with a great table.&rdquo;
+          </blockquote>
         </div>
+      </div>
 
-        <div className="column">
-          <div className="input-box">
-            <label htmlFor="phoneNumber">Phone Number</label>
-            <input
-              type="tel"
-              pattern="[0-9]{10}"
-              maxLength={10}
-              minLength={10}
-              id="phoneNumber"
-              name="phoneNumber"
-              placeholder="Enter phone"
-              title="Ten digit code"
-              value={formData.phoneNumber}
-              onChange={handleChange}
-              required
-            />
+      {/* Right panel / form */}
+      <div className="resv-page__form-col">
+        <div className="resv-form">
+
+          <Link to="/" className="resv-form__back">
+            <i className="fa-solid fa-arrow-left" /> Back to home
+          </Link>
+
+          <div className="resv-form__header">
+            <span className="resv-form__label">Reservations</span>
+            <h1 className="resv-form__title">Book Your Table</h1>
+            <p className="resv-form__sub">Fill in your details and we'll confirm your spot.</p>
           </div>
 
-          <div className="input-box">
-            <label htmlFor="date">Date</label>
-            <input
-              type="date"
-              id="date"
-              name="date"
-              min={today}
-              max={maxDate}
-              value={formData.date}
-              onChange={handleChange}
-              required
-            />
-          </div>
+          <form onSubmit={handleSubmit}>
+
+            {/* Name */}
+            <div className="resv-field">
+              <label htmlFor="name" className="resv-field__label">Full Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                className="resv-field__input"
+                placeholder="e.g. Jane Smith"
+                value={formData.name}
+                onChange={handleChange}
+                required
+              />
+            </div>
+
+            {/* Email */}
+            <div className="resv-field">
+              <label htmlFor="email" className="resv-field__label">Email Address</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                className="resv-field__input"
+                placeholder="e.g. jane@email.com"
+                value={formData.email}
+                onChange={handleChange}
+              />
+            </div>
+
+            {/* Phone + Date row */}
+            <div className="resv-row">
+              <div className="resv-field">
+                <label htmlFor="phoneNumber" className="resv-field__label">Phone Number</label>
+                <input
+                  type="tel"
+                  pattern="[0-9]{10}"
+                  maxLength={10}
+                  minLength={10}
+                  id="phoneNumber"
+                  name="phoneNumber"
+                  className="resv-field__input"
+                  placeholder="10-digit number"
+                  title="Ten digit code"
+                  value={formData.phoneNumber}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <div className="resv-field">
+                <label htmlFor="date" className="resv-field__label">Date</label>
+                <input
+                  type="date"
+                  id="date"
+                  name="date"
+                  className="resv-field__input"
+                  min={today}
+                  max={maxDate}
+                  value={formData.date}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+            </div>
+
+            {/* Time + Party size row */}
+            <div className="resv-row">
+              <div className="resv-field">
+                <label htmlFor="hoursSelect" className="resv-field__label">Arrival Time</label>
+                <select
+                  name="hours"
+                  id="hoursSelect"
+                  className="resv-field__input resv-field__select"
+                  value={formData.hours}
+                  onChange={handleChange}
+                  required
+                >
+                  <option value="" disabled>Select time</option>
+                  {availableHours.map((h) => (
+                    <option key={h} value={h}>{h}</option>
+                  ))}
+                </select>
+              </div>
+              <div className="resv-field">
+                <label htmlFor="partySize" className="resv-field__label">Guests</label>
+                <select
+                  name="partySize"
+                  id="partySize"
+                  className="resv-field__input resv-field__select"
+                  value={formData.partySize}
+                  onChange={handleChange}
+                  required
+                >
+                  <option value="" disabled>How many?</option>
+                  {[1, 2, 3, 4, 5, 6].map((n) => (
+                    <option key={n} value={n}>{n} {n === 1 ? 'guest' : 'guests'}</option>
+                  ))}
+                </select>
+              </div>
+            </div>
+
+            {error && (
+              <p className="resv-form__error">
+                <i className="fa-solid fa-circle-exclamation" /> {error}
+              </p>
+            )}
+
+            <button type="submit" className="resv-form__submit" disabled={loading}>
+              {loading
+                ? <><i className="fa-solid fa-spinner fa-spin" /> Submitting…</>
+                : <><i className="fa-solid fa-calendar-check" /> Confirm Reservation</>}
+            </button>
+
+          </form>
         </div>
-
-        <div className="column">
-          <div className="select-box">
-            <select
-              name="hours"
-              id="hoursSelect"
-              value={formData.hours}
-              onChange={handleChange}
-              required
-            >
-              <option value="" disabled>
-                Hour
-              </option>
-              {availableHours.map((h) => (
-                <option key={h} value={h}>
-                  {h}
-                </option>
-              ))}
-            </select>
-          </div>
-        </div>
-
-        <div className="column">
-          <div className="select-box">
-            <select
-              name="partySize"
-              value={formData.partySize}
-              onChange={handleChange}
-              required
-            >
-              <option value="" disabled>
-                Party size
-              </option>
-              {[1, 2, 3, 4, 5, 6].map((n) => (
-                <option key={n} value={n}>
-                  {n}
-                </option>
-              ))}
-            </select>
-          </div>
-        </div>
-
-        {error && <p style={{ color: 'red', marginTop: 8 }}>{error}</p>}
-
-        <button type="submit" disabled={loading}>
-          {loading ? 'Submitting...' : 'Submit'}
-        </button>
-      </form>
-    </section>
+      </div>
+    </div>
   )
 }

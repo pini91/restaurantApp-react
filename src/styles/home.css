@@ -21,501 +21,813 @@ a {
   text-decoration: none;
 }
 
-main {
-  height: 600px;
-  max-width: 1000px;
-  background-image: url('/src/assets/imgs/homePage/homePage-1.png');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-attachment: scroll;
-  background-size: cover;
+/* 
+   HERO MAIN
+   Full-viewport hero with dark photo overlay + centered content.
+ */
+.hero-main {
+  position: relative;
   width: 100%;
-  display: flex;
-  margin: 0 auto;
-  clear: both;
-  color:black;
-}
-
-.nav {
-  position: fixed;
-  right: 5%;
-  margin: 1%;
-  height: 35px;
-  border-radius: 10px;
-  font-family: 'Inter', system-ui, sans-serif;
-}
-
-.navList {
-  display: inline-block;
-  padding: 8px 12px;
-  font-weight: 600;
-  font-size: 1rem;
-  letter-spacing: 0.03em;
-  cursor: pointer;
-  border: 3px double orange;
-  margin: 0 5px;
-  text-align: center;
-  border-radius: 4px;
-  line-height: 1.2;
-  vertical-align: middle;
-}
-
-.navList:hover {
-  background-color: rgba(255, 165, 0, 0.7);
-  border-color: darkorange;
-  transition: all 0.3s ease;
-}
-
-.navList a {
-  width: 100%;
-  height: 100%;
-  color: black;
-}
-
-.navList:hover a {
-  color: white;
-}
-
-main section {
-  display: flex;
-  flex-direction: column;
-  width: 30%;
-  margin-left: 4%;
-}
-
-main section h1 {
-  padding-top: 30%;
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: 2.75rem;
-  font-weight: 700;
-  line-height: 1.2;
-  margin-left: 0;
-  text-align: left;
-}
-
-.socialMedia {
-  display: flex;
-  flex-direction: row;
-  gap: 15px;
-  margin-top: 15px;
-}
-
-.socialMedia i {
-  cursor: pointer;
-}
-
-.reservation {
-  cursor: pointer;
-  height: 30px;
-  width: 210px;
-  align-self: flex-start;
-  margin-top: 15px;
-}
-
-#hambi {
-  position: fixed;
-  right: 0;
-  height: 40px;
-  width: 40px;
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-  margin-right: 3%;
-}
-
-#hambi:hover {
-  background-color: #ddd;
-}
-
-#discover {
-  height: 500px;
-  max-width: 1000px;
-  background-image: url('/src/assets/imgs/homePage/homePage-2.jpg');
-  background-repeat: no-repeat;
-  background-position: center;
+  min-height: 92vh;
+  background-image: url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1600&q=80');
   background-size: cover;
+  background-position: center;
   display: flex;
-  justify-content: end;
   align-items: center;
-  width: 100%;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-main__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(14, 30, 20, 0.55) 0%,
+    rgba(14, 30, 20, 0.72) 100%
+  );
+}
+
+.hero-main__content {
+  position: relative;
+  z-index: 1;
   text-align: center;
+  padding: 2rem 1.5rem;
+  max-width: 50rem;
+  width: 100%;
   margin: 0 auto;
-  margin-top: 1%;
-  color: #333;
-}
-
-#discover div {
-  width: 40%;
-  text-align: justify;
-  margin-right: 7%;
-  margin-top: 5%;
-}
-
-#discover div * {
-  padding-bottom: 30px;
-}
-
-#discover div span {
-  color: orange;
-  font-family: 'Inter', system-ui, sans-serif;
-  font-weight: 600;
-  font-size: 0.8rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  padding-bottom: 20px;
-  display: block;
-}
-
-#speciality {
   display: flex;
   flex-direction: column;
-  max-width: 1000px;
-  background-color: rgb(246, 214, 154);
-  width: 100%;
-  text-align: center;
-  margin: 0 auto;
-  margin-top: 1%;
-  padding-bottom: 40px;
+  align-items: center;
+  gap: 1.25rem;
 }
 
-#speciality h1 {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-style: italic;
-  font-size: 3.25rem;
+.hero-main__label {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.75rem;
   font-weight: 600;
-  padding-top: 1%;
-  padding-bottom: 3%;
-  margin-top: 5%;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--brand-secondary, #E7A85A);
+  display: inline-block;
+  padding: 0.3rem 1rem;
+  border: 1px solid rgba(231, 168, 90, 0.5);
+  border-radius: 2rem;
 }
 
-#speciality ul {
+.hero-main__headline {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2.4rem, 6vw, 4.25rem);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  color: #fff;
+  margin: 0;
+}
+
+.hero-main__sub {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 1.05rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.78);
+  max-width: 36ch;
+  margin: 0;
+}
+
+.hero-main__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+.hero-main__cta-primary {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #fff;
+  background: var(--brand-primary, #1F3A2E);
+  padding: 0.7rem 1.75rem;
+  border-radius: 2rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.hero-main__cta-primary:hover {
+  background: var(--brand-primary-light, #2F5A46);
+  transform: translateY(-2px);
+  color: #fff;
+}
+
+.hero-main__cta-secondary {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: #fff;
+  background: transparent;
+  padding: 0.7rem 1.75rem;
+  border-radius: 2rem;
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+}
+
+.hero-main__cta-secondary:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.85);
+  transform: translateY(-2px);
+  color: #fff;
+}
+
+.hero-main__social {
+  display: flex;
+  gap: 1.1rem;
+  margin-top: 0.5rem;
+}
+
+.hero-main__social a {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition: color 0.18s ease, transform 0.15s ease;
+}
+
+.hero-main__social a:hover {
+  color: var(--brand-secondary, #E7A85A);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 575.98px) {
+  .hero-main {
+    min-height: 100svh;
+    background-position: 60% center;
+  }
+
+  .hero-main__headline {
+    font-size: 2.2rem;
+  }
+}
+
+
+/* 
+   NAVBAR
+ */
+.site-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #fff;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
+}
+
+.site-navbar__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  height: 4.5rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* Brand */
+.site-navbar__brand {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--brand-primary, #1F3A2E);
+  white-space: nowrap;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+/* Desktop links */
+.site-navbar__links {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
   list-style: none;
+  margin: 0 auto;
   padding: 0;
 }
 
-#speciality ul li {
-  display: inline;
+.site-navbar__link {
   font-family: 'Inter', system-ui, sans-serif;
-  font-size: 1.1rem;
+  font-size: 0.875rem;
   font-weight: 500;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  padding: 2%;
-  padding-bottom: 5%;
-}
-
-#speciality ul li:hover {
-  border-bottom: 5px solid rgb(231, 153, 9);
-  cursor: pointer;
-  transition: 0.2s linear;
-}
-
-.ulMeni {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  margin-top: 5%;
-}
-
-.ulMeni section {
-  flex: 0 0 50%;
-  padding: 10px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.ulMeni img {
-  max-width: 100%;
-  width: 200px;
-  height: 150px;
-  display: block;
-  margin: 0 auto 10px;
-  border-radius: 8px;
-  object-fit: cover;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-#wine {
-  display: flex;
-  flex-direction: column;
-  max-width: 1000px;
-  background-color: white;
-  clear: both;
-  margin: 0 auto;
-  padding-bottom: 40px;
-}
-
-#sips {
-  margin-top: 2%;
-  text-align: center;
+  letter-spacing: 0.02em;
+  color: #555;
+  padding: 0.4rem 0.85rem;
+  border-radius: 2rem;
   text-decoration: none;
-  color: rgb(249, 100, 100);
+  transition: color 0.15s ease, background 0.15s ease;
 }
 
-#sips h2 {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-style: italic;
-  font-weight: 400;
-  font-size: 2rem;
-  letter-spacing: 0.01em;
+.site-navbar__link:hover,
+.site-navbar__link--active {
+  color: var(--brand-primary, #1F3A2E);
+  background: rgba(31, 58, 46, 0.07);
 }
 
-#bottle {
-  margin-top: 2%;
-  margin: 20px auto;
-  width: 50%;
-}
-
-#bottle img {
-  max-width: 100%;
-}
-
-#hours {
-  display: flex;
-  flex-direction: column;
-  max-width: 1000px;
-  text-align: center;
-  background-color: rgb(229, 235, 235);
-  margin: auto;
-  margin-top: 1%;
-  padding-bottom: 40px;
-}
-
-#hours h1 {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-style: italic;
-  font-weight: 600;
-  padding-top: 5%;
-  font-size: 2.75rem;
-  letter-spacing: 0.01em;
-}
-
-#hours i {
-  font-size: x-large;
-  color: orange;
-  padding-top: 3%;
-}
-
-#hours span {
-  display: grid;
-}
-
-#hours span + span {
-  color: orange;
-  font-style: italic;
-  font-weight: bolder;
-  font-size: 20px;
-  padding-top: 1%;
-}
-
-.sate {
-  display: flex;
-  justify-content: space-evenly;
-  width: 80%;
-  margin: 0 auto;
-  padding: 20px 0;
-  gap: 40px;
-}
-
-.sate > div {
-  flex: 1;
-  text-align: center;
-  padding: 15px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease;
-}
-
-.sate > div:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-.dias {
-  padding: 10px 0 5px;
-  color: #333;
+/* Desktop CTA */
+.site-navbar__cta {
   font-family: 'Inter', system-ui, sans-serif;
-  font-size: 1rem;
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
-.horas {
-  padding-top: 5px;
-  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 0.85rem;
   font-weight: 600;
-  font-size: 1.4rem;
-  text-align: center;
-  width: 100%;
-  color: #e67e22;
+  letter-spacing: 0.02em;
+  color: #fff;
+  background: var(--brand-primary, #1F3A2E);
+  padding: 0.5rem 1.25rem;
+  border-radius: 2rem;
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background 0.18s ease;
 }
 
-.image-container {
-  width: 100%;
-  display: flex;
+.site-navbar__cta:hover {
+  background: var(--brand-primary-light, #2F5A46);
+  color: #fff;
+}
+
+/* Hamburger — hidden on desktop */
+.site-navbar__hamburger {
+  display: none;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
-  margin-top: 30px;
-  padding: 10px;
+  gap: 5px;
+  width: 2rem;
+  height: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+  margin-left: auto;
 }
 
-.bottomImg {
-  max-width: 250px;
-  height: auto;
+.site-navbar__hamburger span {
   display: block;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-}
-
-.bottomImg:hover {
-  transform: scale(1.05);
-}
-
-footer {
-  align-content: center;
-  justify-content: center;
+  height: 2px;
   width: 100%;
-  text-align: center;
-  display: flex;
-  margin-top: 20px;
-  padding: 15px;
-  color:black;
+  background: var(--brand-primary, #1F3A2E);
+  border-radius: 2px;
+  transition: transform 0.22s ease, opacity 0.22s ease;
+  transform-origin: center;
+}
+
+.site-navbar__hamburger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg);  }
+.site-navbar__hamburger.is-open span:nth-child(2) { opacity: 0;                                  }
+.site-navbar__hamburger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Mobile drawer */
+.site-navbar__drawer {
+  display: none;
 }
 
 /* Responsive */
-@media screen and (max-width: 600px) {
-  body {
-    overflow-x: hidden;
-  }
+@media (max-width: 767.98px) {
+  .site-navbar__links,
+  .site-navbar__cta { display: none; }
 
-  main {
-    height: auto;
-    min-height: 400px;
-    width: 100%;
-    background-position: 30% center;
-  }
+  .site-navbar__hamburger { display: flex; }
 
-  main section {
-    width: 80%;
-    margin-left: 10%;
-    background-color: rgba(255, 255, 255, 0.7);
-    padding: 20px;
-    border-radius: 8px;
-  }
-
-  main section h1 {
-    padding-top: 10%;
-    font-size: 32px;
-  }
-
-  #hambi {
+  .site-navbar__drawer {
     display: flex;
-    justify-content: end;
-    position: fixed;
+    flex-direction: column;
+    gap: 0;
+    background: #fff;
+    border-top: 1px solid #eaeaea;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.28s ease;
   }
 
-  .nav {
-    display: none;
-    flex-direction: column;
-    position: fixed;
-    right: 0;
-    margin-top: 8%;
-    width: 100%;
-    background-color: #ddd;
-    height: 200px;
-    padding-top: 0.5%;
-    border-radius: 1px;
+  .site-navbar__drawer.is-open {
+    max-height: 18rem;
+  }
+
+  .site-navbar__drawer-link {
     font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #333;
+    padding: 0.9rem 1.5rem;
+    border-bottom: 1px solid #f0f0f0;
+    text-decoration: none;
+    transition: background 0.15s ease;
   }
 
-  .nav.open {
-    display: flex;
-  }
+  .site-navbar__drawer-link:hover { background: #fafafa; }
 
-  .navList {
-    display: block;
-    padding: 15px;
+  .site-navbar__drawer-cta {
+    margin: 1rem 1.5rem;
     text-align: center;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #fff;
+    background: var(--brand-primary, #1F3A2E);
+    padding: 0.65rem 1rem;
+    border-radius: 2rem;
+    text-decoration: none;
+    transition: background 0.18s ease;
   }
 
-  #speciality h1 {
-    font-size: 2rem;
-  }
-
-  .ulMeni section {
-    flex: 0 0 100%;
-    max-width: 100%;
-  }
-
-  #bottle {
-    width: 80%;
-  }
-
-  .sate {
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .socialMedia {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 15px;
+  .site-navbar__drawer-cta:hover {
+    background: var(--brand-primary-light, #2F5A46);
   }
 }
 
-@media screen and (max-width: 768px) {
-  main {
-    height: 450px;
-    background-position: left center;
-  }
+/* SHARED SECTION UTILITIES */
+.section-label {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--brand-secondary, #E7A85A);
+  display: inline-block;
+  margin-bottom: 0.75rem;
+}
 
-  main section {
-    width: 60%;
-  }
+/* Section vertical rhythm */
+.about-section,
+.speciality-section,
+.wine-section,
+.hours-section {
+  padding: 5rem 1.5rem;
+}
 
-  main section h1 {
-    font-size: 2.2rem;
-    padding-top: 20%;
-  }
-
-  .sate {
-    width: 90%;
+@media (min-width: 992px) {
+  .about-section,
+  .speciality-section,
+  .wine-section,
+  .hours-section {
+    padding: 7rem 1.5rem;
   }
 }
 
-@media screen and (max-width: 430px) {
-  main section h1 {
-    font-size: 1.6rem;
+/* Centered, max-width container shared across sections */
+.about-section__inner,
+.speciality-section__inner,
+.wine-section__inner,
+.hours-section__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* 
+   ABOUT SECTION
+ */
+.about-section {
+  background: #fff;
+}
+
+.about-section__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.about-section__img-col {
+  position: relative;
+}
+
+.about-section__img-wrap {
+  border-radius: 1rem;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+}
+
+.about-section__img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.about-section__badge {
+  position: absolute;
+  bottom: -1.5rem;
+  right: -1.5rem;
+  background: var(--brand-primary, #1F3A2E);
+  color: #fff;
+  border-radius: 1rem;
+  padding: 1.25rem 1.5rem;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(31, 58, 46, 0.3);
+}
+
+.about-section__badge-number {
+  display: block;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--brand-secondary, #E7A85A);
+}
+
+.about-section__badge-label {
+  display: block;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.75);
+  margin-top: 0.25rem;
+}
+
+.about-section__heading {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.9rem, 3vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--brand-primary, #1F3A2E);
+  margin-bottom: 1.25rem;
+}
+
+.about-section__body {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.about-section__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--brand-primary, #1F3A2E);
+  text-decoration: none;
+  border-bottom: 2px solid var(--brand-secondary, #E7A85A);
+  padding-bottom: 0.15rem;
+  transition: gap 0.18s ease, color 0.18s ease;
+}
+
+.about-section__cta:hover {
+  gap: 0.8rem;
+  color: var(--brand-primary-light, #2F5A46);
+}
+
+/* 
+   SPECIALITY SECTION
+ */
+.speciality-section {
+  background: #EFE9E1;
+}
+
+.speciality-section__header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.speciality-section__header h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 700;
+  color: var(--brand-primary, #1F3A2E);
+  margin-bottom: 1.5rem;
+}
+
+.speciality-section__tabs {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.speciality-tab {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--brand-primary, #1F3A2E);
+  border: 1.5px solid var(--brand-primary, #1F3A2E);
+  border-radius: 2rem;
+  padding: 0.4rem 1.1rem;
+  text-decoration: none;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+
+.speciality-tab:hover {
+  background: var(--brand-primary, #1F3A2E);
+  color: #fff;
+}
+
+.speciality-section__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.speciality-card {
+  background: #fff;
+  border-radius: 0.875rem;
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.speciality-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.speciality-card__img-wrap {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.speciality-card__img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s ease;
+}
+
+.speciality-card:hover .speciality-card__img-wrap img {
+  transform: scale(1.06);
+}
+
+.speciality-card__title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--brand-primary, #1F3A2E);
+  margin: 1rem 0 0.3rem;
+}
+
+.speciality-card__desc {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.8rem;
+  color: #777;
+  line-height: 1.5;
+  padding: 0 1rem 1.25rem;
+  margin: 0;
+}
+
+/* WINE SECTION */
+.wine-section {
+  background: var(--brand-primary, #1F3A2E);
+}
+
+.wine-section__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.wine-section__img-col {
+  border-radius: 1rem;
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+}
+
+.wine-section__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.wine-section .section-label {
+  color: var(--brand-secondary, #E7A85A);
+}
+
+.wine-section__heading {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.9rem, 3vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: #fff;
+  margin-bottom: 1.25rem;
+}
+
+.wine-section__body {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 1.5rem;
+}
+
+.wine-section__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--brand-secondary, #E7A85A);
+  text-decoration: none;
+  border-bottom: 2px solid rgba(231, 168, 90, 0.4);
+  padding-bottom: 0.15rem;
+  transition: gap 0.18s ease, border-color 0.18s ease;
+}
+
+.wine-section__cta:hover {
+  gap: 0.8rem;
+  border-color: var(--brand-secondary, #E7A85A);
+  color: var(--brand-secondary, #E7A85A);
+}
+
+/* HOURS SECTION */
+.hours-section {
+  background: #F4F1EC;
+}
+
+.hours-section__header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.hours-section__heading {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 700;
+  color: var(--brand-primary, #1F3A2E);
+  margin-bottom: 0.75rem;
+}
+
+.hours-section__sub {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.hours-section__phone-link {
+  color: var(--brand-primary, #1F3A2E);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.hours-section__cards {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+
+.hours-card {
+  background: #fff;
+  border-radius: 0.875rem;
+  padding: 2.5rem 3rem;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  min-width: 16rem;
+  flex: 1;
+  max-width: 22rem;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.hours-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.hours-card--accent {
+  background: var(--brand-primary, #1F3A2E);
+}
+
+.hours-card__icon {
+  font-size: 1.5rem;
+  color: var(--brand-secondary, #E7A85A);
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.hours-card__days {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #777;
+  margin-bottom: 0.5rem;
+}
+
+.hours-card--accent .hours-card__days {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.hours-card__time {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--brand-primary, #1F3A2E);
+  margin: 0;
+}
+
+.hours-card--accent .hours-card__time {
+  color: #fff;
+}
+
+.hours-section__cta-wrap {
+  text-align: center;
+}
+
+.hours-section__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--brand-primary, #1F3A2E);
+  padding: 0.75rem 2rem;
+  border-radius: 2rem;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.hours-section__cta:hover {
+  background: var(--brand-primary-light, #2F5A46);
+  transform: translateY(-2px);
+  color: #fff;
+}
+
+/* 
+   FOOTER
+ */
+.site-footer {
+  background: #14271F;
+  color: rgba(255, 255, 255, 0.5);
+  text-align: center;
+  padding: 2rem 1.5rem;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.85rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.site-footer__sep {
+  color: var(--brand-secondary, #E7A85A);
+}
+
+/* 
+   RESPONSIVE
+ */
+@media (max-width: 991.98px) {
+  .about-section__inner,
+  .wine-section__inner {
+    grid-template-columns: 1fr;
+    gap: 3rem;
   }
 
-  .reservation {
-    width: 100%;
+  .about-section__badge {
+    right: 0;
   }
 
-  #speciality h1 {
-    font-size: 1.75rem;
+  .wine-section__img-col {
+    aspect-ratio: 16 / 9;
   }
 
-  .ulMeni img {
-    width: 150px;
-    height: 120px;
-  }
-
-  #hours h1 {
-    font-size: 1.9rem;
+  .speciality-section__grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
+
+@media (max-width: 575.98px) {
+  .speciality-section__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hours-card {
+    min-width: 100%;
+  }
+
+  .about-section,
+  .speciality-section,
+  .wine-section,
+  .hours-section {
+    padding: 4rem 1.25rem;
+  }
+}
+

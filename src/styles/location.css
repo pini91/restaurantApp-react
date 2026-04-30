@@ -7,7 +7,7 @@ body {
   padding-bottom: 2rem;
 }
 
-/* ── Header ─────────────────────────────────────────── */
+/* Header  */
 .location-header {
   position: relative;
   display: flex;
@@ -30,7 +30,7 @@ body {
   margin: 0;
 }
 
-/* ── Back button — identical to GalleryPage ─────────── */
+/* Back button — identical to GalleryPage */
 .homeButton {
   display: inline-flex;
   align-items: center;
@@ -56,7 +56,7 @@ body {
   color: white;
 }
 
-/* ── Body ───────────────────────────────────────────── */
+/* Body */
 .location-body {
   display: flex;
   flex-direction: column;
@@ -94,7 +94,7 @@ body {
   object-fit: cover;
 }
 
-/* ── Responsive ─────────────────────────────────────── */
+/* Responsive */
 @media (max-width: 575px) {
   .location-header {
     padding: 1rem 1rem 0.5rem;

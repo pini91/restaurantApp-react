@@ -156,19 +156,50 @@ export default function TablesPage() {
 
   if (!reservation) {
     return (
-      <div style={{ padding: 20 }}>
-        <p>No reservation found. Please fill in the reservation form first.</p>
-        <Link to="/bookForm">Go to form</Link>
+      <div className="tables-page tables-page--empty">
+        <div className="tables-empty-card">
+          <i className="fa-solid fa-circle-exclamation" />
+          <p>No reservation found. Please fill in the reservation form first.</p>
+          <Link to="/bookForm" className="tables-empty-card__cta">Make a Reservation</Link>
+        </div>
       </div>
     )
   }
 
   if (loading) {
-    return <div style={{ padding: 20, color: 'white' }}>Loading tables...</div>
+    return (
+      <div className="tables-page tables-page--loading">
+        <i className="fa-solid fa-spinner fa-spin" />
+        <span>Loading floor plan…</span>
+      </div>
+    )
   }
 
   return (
     <div className="tables-page">
+
+      {/* Booking info header */}
+      <header className="tables-header">
+        <Link to="/" className="tables-header__back">
+          <i className="fa-solid fa-arrow-left" />
+        </Link>
+        <div className="tables-header__info">
+          <span className="tables-header__name">{reservation.name}</span>
+          <span className="tables-header__sep">·</span>
+          <span>{reservation.date}</span>
+          <span className="tables-header__sep">·</span>
+          <span>{reservation.hour}</span>
+          <span className="tables-header__sep">·</span>
+          <span>{reservation.partySize} {reservation.partySize === 1 ? 'guest' : 'guests'}</span>
+        </div>
+        <span className="tables-header__ref">#{reservation.reservationId.slice(-6).toUpperCase()}</span>
+      </header>
+
+      <div className="tables-intro">
+        <h2 className="tables-intro__title">Choose Your Table</h2>
+        <p className="tables-intro__sub">Tap an available table to confirm your seat.</p>
+      </div>
+
       <div className="contenedor">
         <div className="container">
           <div className="screen">View</div>
@@ -232,7 +263,7 @@ export default function TablesPage() {
                 <div
                   key={t}
                   className={`${seatClass(t)} bar-chairs`}
-                  onClick={() => handleTableClick(t)}
+                  // onClick={() => handleTableClick(t)}
                 >
                   {t}
                 </div>
@@ -254,12 +285,12 @@ export default function TablesPage() {
             ))}
           </div>
 
-          {/* Fixed/entrance seats (non-selectable) */}
+          {/* Fixed/entrance seats */}
           <div className="row">
             {ALL_TABLES.lastFixed.map((t) => (
               <div
-                key={t} 
-                className={`seat last${seatClass(t)} round`}
+                key={t}
+                className={`${seatClass(t)} round`}
                 onClick={() => handleTableClick(t)}
               >
                 {t}
@@ -286,9 +317,26 @@ export default function TablesPage() {
         </div>
       </div>
 
+      {/* Legend */}
+      <div className="tables-legend">
+        <span className="tables-legend__item">
+          <span className="tables-legend__dot tables-legend__dot--available" />
+          Available
+        </span>
+        <span className="tables-legend__item">
+          <span className="tables-legend__dot tables-legend__dot--busy" />
+          Reserved
+        </span>
+        <span className="tables-legend__item">
+          <span className="tables-legend__dot tables-legend__dot--small" />
+          Wrong Capacity
+        </span>
+      </div>
+
       <button className="noTable" onClick={handleNoTablePreference}>
-        NO TABLE PREFERENCE
+        <i className="fa-solid fa-shuffle" /> No Table Preference
       </button>
+
     </div>
   )
 }

@@ -1,39 +1,75 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 export default function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false)
+  const [open, setOpen] = useState(false)
 
   return (
-    <>
-      <div
-        id="hambi"
-        onClick={() => setMenuOpen((prev) => !prev)}
-        aria-label="Toggle navigation"
-        role="button"
-        tabIndex={0}
-        onKeyDown={(e) => e.key === 'Enter' && setMenuOpen((prev) => !prev)}
-      >
-        <img src="/imgs/hambii.png" alt="menu" />
+    <nav className="site-navbar">
+      <div className="site-navbar__inner">
+
+        {/* Brand */}
+        <Link to="/" className="site-navbar__brand">
+          Health &amp; Taste
+        </Link>
+
+        {/* Desktop links- Centered */}
+        <ul className="site-navbar__links">
+          <li>
+            <NavLink
+              to="/menu"
+              className={({ isActive }) =>
+                'site-navbar__link' + (isActive ? ' site-navbar__link--active' : '')
+              }
+            >
+              Menu
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/gallery"
+              className={({ isActive }) =>
+                'site-navbar__link' + (isActive ? ' site-navbar__link--active' : '')
+              }
+            >
+              Gallery
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/location"
+              className={({ isActive }) =>
+                'site-navbar__link' + (isActive ? ' site-navbar__link--active' : '')
+              }
+            >
+              Location
+            </NavLink>
+          </li>
+        </ul>
+
+        {/* Desktop CTA */}
+        <Link to="/bookForm" className="site-navbar__cta">
+          Reserve a Table
+        </Link>
+
+        {/* Hamburger— mobile only */}
+        <button
+          className={`site-navbar__hamburger${open ? ' is-open' : ''}`}
+          onClick={() => setOpen((v) => !v)}
+          aria-label="Toggle navigation"
+          aria-expanded={open}
+        >
+          <span /><span /><span />
+        </button>
       </div>
 
-      <ul className={`nav${menuOpen ? ' open' : ''}`}>
-        <li className="navList">
-          <Link to="/menu" onClick={() => setMenuOpen(false)}>
-            Menu 
-          </Link>
-        </li>
-        <li className="navList">
-          <Link to="/gallery" onClick={() => setMenuOpen(false)}>
-            Gallery 
-          </Link>
-        </li>
-        <li className="navList">
-          <Link to="/location" onClick={() => setMenuOpen(false)}>
-            Location
-          </Link>
-        </li>
-      </ul>
-    </>
+      {/* Mobile drawer */}
+      <div className={`site-navbar__drawer${open ? ' is-open' : ''}`}>
+        <NavLink to="/menu"     className="site-navbar__drawer-link" onClick={() => setOpen(false)}>Menu</NavLink>
+        <NavLink to="/gallery"  className="site-navbar__drawer-link" onClick={() => setOpen(false)}>Gallery</NavLink>
+        <NavLink to="/location" className="site-navbar__drawer-link" onClick={() => setOpen(false)}>Location</NavLink>
+        <Link    to="/bookForm" className="site-navbar__drawer-cta"  onClick={() => setOpen(false)}>Reserve a Table</Link>
+      </div>
+    </nav>
   )
 }

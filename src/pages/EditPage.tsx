@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { lookupReservation, deleteReservation } from '../services/api'
 import '../styles/edit.css'
 
@@ -45,31 +45,65 @@ export default function EditPage() {
 
   return (
     <div className="edit-page">
-      <section className="container">
-        <header>CHANGE YOUR RESERVATION</header>
-        <form onSubmit={handleLookup}>
-          <div>
-            <input
-              type="text"
-              id="id"
-              name="id"
-              placeholder="Enter Reservation Number"
-              value={reservationId}
-              onChange={(e) => setReservationId(e.target.value)}
-            />
-          </div>
-          {error && <p className="edit-error">{error}</p>}
-          <button type="submit" disabled={loading}>
-            {loading ? 'Loading...' : 'Find Reservation'}
-          </button>
-        </form>
+      <div className="edit-card">
 
-        <form onSubmit={handleDelete} style={{ marginTop: 16 }}>
-          <button type="submit" disabled={loading}>
-            Delete Reservation
-          </button>
-        </form>
-      </section>
+        {/* Icon */}
+        <div className="edit-card__icon">
+          <i className="fa-solid fa-calendar-pen" />
+        </div>
+
+        <span className="edit-card__label">Manage Booking</span>
+        <h1 className="edit-card__title">Find Your Reservation</h1>
+        <p className="edit-card__sub">Enter your reservation number below to update or cancel your booking.</p>
+
+        <div className="edit-card__field">
+          <label htmlFor="resv-id" className="edit-card__field-label">Reservation Number</label>
+          <input
+            type="text"
+            id="resv-id"
+            name="id"
+            className="edit-card__input"
+            placeholder="e.g. 6641f3a2b9c4d50012e3f7aa"
+            value={reservationId}
+            onChange={(e) => setReservationId(e.target.value)}
+          />
+        </div>
+
+        {error && (
+          <p className="edit-card__error">
+            <i className="fa-solid fa-circle-exclamation" /> {error}
+          </p>
+        )}
+
+        <button
+          type="button"
+          className="edit-card__btn edit-card__btn--primary"
+          onClick={handleLookup}
+          disabled={loading}
+        >
+          {loading
+            ? <><i className="fa-solid fa-spinner fa-spin" /> Looking up&hellip;</>
+            : <><i className="fa-solid fa-magnifying-glass" /> Find Reservation</>}
+        </button>
+
+        <div className="edit-card__divider">
+          <span>or</span>
+        </div>
+
+        <button
+          type="button"
+          className="edit-card__btn edit-card__btn--danger"
+          onClick={handleDelete}
+          disabled={loading}
+        >
+          <i className="fa-solid fa-trash" /> Cancel Reservation
+        </button>
+
+        <Link to="/" className="edit-card__back">
+          <i className="fa-solid fa-arrow-left" /> Back to home
+        </Link>
+
+      </div>
     </div>
   )
 }

@@ -146,7 +146,7 @@ export default function AdminDashboardPage() {
       {error && <p className="admin-db-error">{error}</p>}
 
       <main className="admin-db-main">
-        {/* ── Date filter bar ── */}
+        {/* Date filter bar */}
         <div className="admin-db-filter-bar">
           <button
             className={`admin-db-filter-btn ${selectedDate === '' ? 'active' : ''}`}
@@ -210,7 +210,7 @@ export default function AdminDashboardPage() {
         )}
       </main>
 
-      {/* ── Edit modal ── */}
+      {/* Edit modal */}
       {editing && (
         <div className="admin-modal-overlay" onClick={() => setEditing(null)}>
           <div className="admin-modal" onClick={(e) => e.stopPropagation()}>

@@ -3,7 +3,7 @@
   background-color: #faf7f4;
 }
 
-/* ── Header ───────────────────────────────────────────────── */
+/* Header */
 .menu-header {
   position: relative;
   display: flex;
@@ -26,7 +26,7 @@
   margin: 0;
 }
 
-/* ── Back button — same as Gallery/Location ───────────────── */
+/* Back button — same as Gallery/Location */
 .homeButton {
   display: inline-flex;
   align-items: center;
@@ -52,7 +52,9 @@
   color: white;
 }
 
-/* ── Menu cards grid ──────────────────────────────────────── */
+
+
+/* Menu cards grid  */
 .menu-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -106,7 +108,7 @@
   letter-spacing: 0.02em;
 }
 
-/* ── Responsive ───────────────────────────────────────────── */
+/* Responsive */
 @media (max-width: 767px) {
   .menu-grid {
     grid-template-columns: 1fr;

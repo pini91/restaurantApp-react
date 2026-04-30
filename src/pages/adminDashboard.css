@@ -12,7 +12,7 @@
   background-color: rgb(240, 237, 237);
 }
 
-/* ── Header ── */
+/* Header */
 .admin-db-header {
   display: flex;
   justify-content: space-between;
@@ -43,7 +43,7 @@
   background: rgb(88, 56, 250);
 }
 
-/* ── Error banner ── */
+/* Error banner */
 .admin-db-error {
   color: #842029;
   background: #f8d7da;
@@ -51,7 +51,7 @@
   font-size: 0.9rem;
 }
 
-/* ── Main content ── */
+/* Main content */
 .admin-db-main {
   padding: 30px 40px;
 }
@@ -70,7 +70,7 @@
   font-size: 0.95rem;
 }
 
-/* ── Table ── */
+/* Table */
 .admin-db-table-wrapper {
   overflow-x: auto;
   border-radius: 8px;
@@ -114,7 +114,7 @@
   background-color: #fafafa;
 }
 
-/* ── Delete button ── */
+/* Delete button */
 .admin-db-delete {
   padding: 5px 14px;
   background: #dc3545;
@@ -130,7 +130,7 @@
   background: #bb2d3b;
 }
 
-/* ── Loading state ── */
+/* Loading state */
 .admin-db-loading {
   display: flex;
   justify-content: center;
@@ -140,7 +140,7 @@
   color: #666;
 }
 
-/* ── Responsive ── */
+/* Responsive */
 @media screen and (max-width: 768px) {
   .admin-db-header {
     padding: 16px 20px;
@@ -156,7 +156,7 @@
   
 }
 
-/* ── Date filter bar ── */
+/* Date filter bar */
 .admin-db-filter-bar {
   display: flex;
   align-items: center;

@@ -1,70 +1,211 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-}
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap');
 
-body {
-  background-color: rgb(240, 237, 237);
-}
+/* 
+   EDIT / MANAGE RESERVATION PAGE
+ */
 
 .edit-page {
   min-height: 100vh;
-  background-color: rgb(240, 237, 237);
+  background: #EFE9E1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1.25rem;
+  font-family: 'Inter', system-ui, sans-serif;
 }
 
-.edit-page .container {
-  position: relative;
-  max-width: 400px;
+.edit-card {
   width: 100%;
+  max-width: 26rem;
   background: #fff;
-  padding: 25px;
-  border-radius: 8px;
-  box-shadow: 0 0 15px rgba(10, 10, 10, 0.1);
-  margin: 5% auto 5% 37%;
-}
-
-.edit-page header {
-  font-size: large;
-  margin-bottom: 4%;
+  border-radius: 1.25rem;
+  box-shadow: 0 8px 32px rgba(31, 58, 46, 0.10);
+  padding: 2.75rem 2.5rem 2.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
-  font-weight: bold;
-  margin-top: 5%;
 }
 
-.edit-page form {
-  text-align: center;
-  margin-top: 30px;
+/* Top icon badge */
+.edit-card__icon {
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 50%;
+  background: #e8f2ec;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
 }
 
-.edit-page input {
-  width: 60%;
-  text-align: center;
-  margin-bottom: 2%;
-  height: 25px;
-  font-size: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  padding: 0 8px;
+.edit-card__icon i {
+  font-size: 1.8rem;
+  color: #1F3A2E;
 }
 
-.edit-page button {
-  width: 25%;
-  height: 40px;
-  cursor: pointer;
+/* Labels + headings */
+.edit-card__label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: #E7A85A;
+  margin-bottom: 0.45rem;
 }
 
-.edit-error {
-  color: red;
-  text-align: center;
-  margin-top: 10px;
+.edit-card__title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1F3A2E;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+
+.edit-card__sub {
+  font-size: 0.85rem;
+  color: #777;
+  line-height: 1.5;
+  margin-bottom: 1.75rem;
+}
+
+/* Input field */
+.edit-card__field {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.edit-card__field-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: #444;
+  margin-bottom: 0.4rem;
+}
+
+.edit-card__input {
+  width: 100%;
+  height: 2.8rem;
+  padding: 0 0.875rem;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.88rem;
+  color: #333;
+  border: 1.5px solid #D6D6D6;
+  border-radius: 0.5rem;
+  background: #fff;
+  outline: none;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.edit-card__input:focus {
+  border-color: #1F3A2E;
+  box-shadow: 0 0 0 3px rgba(31, 58, 46, 0.10);
+}
+
+/* Error */
+.edit-card__error {
+  width: 100%;
+  font-size: 0.82rem;
+  color: #c0392b;
+  background: #fdf0ee;
+  border: 1px solid #f5c6c1;
+  border-radius: 0.5rem;
+  padding: 0.6rem 0.875rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  text-align: left;
+}
+
+/* Buttons */
+.edit-card__btn {
+  width: 100%;
+  height: 3rem;
+  border: none;
+  border-radius: 2rem;
+  font-family: 'Inter', system-ui, sans-serif;
   font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  transition: background 0.2s ease, transform 0.15s ease;
 }
 
-@media screen and (max-width: 600px) {
-  .edit-page .container {
-    margin: 5% auto;
-    width: 90%;
+.edit-card__btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.edit-card__btn--primary {
+  background: #1F3A2E;
+  color: #fff;
+}
+
+.edit-card__btn--primary:hover:not(:disabled) {
+  background: #2F5A46;
+  transform: translateY(-2px);
+}
+
+.edit-card__btn--danger {
+  background: #fff;
+  color: #c0392b;
+  border: 1.5px solid #f5c6c1;
+}
+
+.edit-card__btn--danger:hover:not(:disabled) {
+  background: #fdf0ee;
+  transform: translateY(-2px);
+}
+
+/* Divider */
+.edit-card__divider {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 1rem 0;
+  color: #bbb;
+  font-size: 0.78rem;
+}
+
+.edit-card__divider::before,
+.edit-card__divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #EBEBEB;
+}
+
+/* Back link */
+.edit-card__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1.5rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #888;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.edit-card__back:hover {
+  color: #1F3A2E;
+}
+
+/* RESPONSIVE */
+@media (max-width: 479.98px) {
+  .edit-card {
+    padding: 2rem 1.5rem 1.75rem;
   }
 }
