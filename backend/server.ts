@@ -65,6 +65,9 @@ app.use(morgan('dev'))
 
 // Sessions stored in MongoDB
 const mongoUrl = (process.env.MONGO_URL || process.env.DB_STRING) as string
+// TLS is required for Atlas (mongodb+srv / .mongodb.net) but must be OFF
+// for Railway's internal MongoDB which runs on a plain private network connection.
+const isAtlas = mongoUrl && (mongoUrl.startsWith('mongodb+srv') || mongoUrl.includes('.mongodb.net'))
 app.use(
   session({
     secret: process.env.SESSION_SECRET || process.env.SESSION || 'dev-secret-change-me',
@@ -77,14 +80,16 @@ app.use(
       httpOnly: true,
       sameSite: 'lax',
     },
-    store: MongoStore.create({ 
-      mongoUrl, 
+    store: MongoStore.create({
+      mongoUrl,
       touchAfter: 24 * 3600,
-      mongoOptions: {
-        tls: true,
-        tlsAllowInvalidCertificates: false,
-        tlsAllowInvalidHostnames: false,
-      }
+      ...(isAtlas && {
+        mongoOptions: {
+          tls: true,
+          tlsAllowInvalidCertificates: false,
+          tlsAllowInvalidHostnames: false,
+        }
+      }),
     }),
     rolling: true,
   })
