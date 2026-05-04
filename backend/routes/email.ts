@@ -40,8 +40,8 @@ router.post('/sendConfirmation', async (req: Request, res: Response) => {
       reservation.name.slice(1).toLowerCase()
 
     const baseUrl = process.env.APP_URL || 'https://health-and-taste.up.railway.app'
-    // const magicLink = `${baseUrl}/edit/${reservation._id}` UNCOMMENT THIS ON PRODUCTION
-    const magicLink = `http://localhost:5174/edit/${reservation._id}`
+    const magicLink = `${baseUrl}/edit/${reservation._id}`
+    // const magicLink = `http://localhost:5174/edit/${reservation._id}`
     
     // Send email
     const emailData = await mg.messages.create('brenda-app.dev', {
