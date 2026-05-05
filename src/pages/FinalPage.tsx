@@ -17,7 +17,7 @@ export default function FinalPage() {
     )
   }
 
-  const name= state.name.split(' ').map(el=> el[0].toUpperCase()+el.slice(1))
+  const name= state.name.split(' ').map(el=> `${el[0].toUpperCase()}+' '+${el.slice(1)}`)
 
   return (
     <div className="final-page">
