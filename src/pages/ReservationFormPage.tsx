@@ -52,6 +52,7 @@ export default function ReservationFormPage() {
   const [availableHours, setAvailableHours] = useState<string[]>([])
   const [error, setError] = useState<string>('')
   const [loading, setLoading] = useState(false)
+  const [phoneDisplay, setPhoneDisplay] = useState('')
 
   const refreshHours = useCallback((date: string) => {
     const hours = buildHours(date)
@@ -63,13 +64,26 @@ export default function ReservationFormPage() {
     refreshHours(today)
   }, [refreshHours, today])
 
+  function formatPhone(digits: string): string {
+    if (digits.length === 0) return ''
+    if (digits.length <= 3) return `(${digits}`
+    if (digits.length <= 6) return `(${digits.slice(0, 3)}) ${digits.slice(3)}`
+    return `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6, 10)}`
+  }
+
   function handleChange(
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) {
     const { name, value } = e.target
-    if (name === 'date') {
-      refreshHours(value)
+
+    if (name === 'phoneNumber') {
+      const digits = value.replace(/\D/g, '').slice(0, 10) // strip non-digits, cap at 10
+      setPhoneDisplay(formatPhone(digits))
+      setFormData((prev) => ({ ...prev, phoneNumber: digits })) // store raw digits
+      return
     }
+
+    if (name === 'date') refreshHours(value)
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
@@ -153,15 +167,11 @@ export default function ReservationFormPage() {
                 <label htmlFor="phoneNumber" className="resv-field__label">Phone Number</label>
                 <input
                   type="tel"
-                  pattern="[0-9]{10}"
-                  maxLength={10}
-                  minLength={10}
                   id="phoneNumber"
                   name="phoneNumber"
                   className="resv-field__input"
-                  placeholder="10-digit number"
-                  title="Ten digit code"
-                  value={formData.phoneNumber}
+                  placeholder="(555) 555-5555"
+                  value={phoneDisplay}
                   onChange={handleChange}
                   required
                 />
