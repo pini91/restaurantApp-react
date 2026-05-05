@@ -9,6 +9,9 @@ RUN npm ci
 
 # Copy source and build
 COPY . .
+# VITE_API_URL must be set at build time so Vite can bake it into the JS bundle.
+# .env is excluded from Docker builds (it's in .dockerignore), so we set it here.
+ENV VITE_API_URL=/api
 RUN npm run build
 # dist/ now contains the compiled frontend
 
