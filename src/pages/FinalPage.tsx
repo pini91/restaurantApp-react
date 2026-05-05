@@ -6,8 +6,6 @@ export default function FinalPage() {
   const location = useLocation()
   const state = location.state as FinalPageState | null
 
-  const name= state.name.split(' ').map(el=> el[0].toUpperCase()+el.slice(1))
-
   if (!state) {
     return (
       <div className="final-page">
@@ -18,6 +16,8 @@ export default function FinalPage() {
       </div>
     )
   }
+
+  const name= state.name.split(' ').map(el=> el[0].toUpperCase()+el.slice(1))
 
   return (
     <div className="final-page">
