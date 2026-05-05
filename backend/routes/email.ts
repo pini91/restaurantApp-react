@@ -35,7 +35,7 @@ router.post('/sendConfirmation', async (req: Request, res: Response) => {
       key: process.env.MAILGUN_API_KEY || process.env.API_KEY || '',
     })
     
-    const capitalizedName = reservation.name.split(' ').map(el=> `${el[0].toUpperCase()}+' '+${el.slice(1)}`)
+    const capitalizedName = reservation.name.split(' ').map(el=> `${el[0].toUpperCase()}${el.slice(1)}`).join(' ')
 
     const baseUrl = process.env.APP_URL
     const magicLink = `${baseUrl}edit/${reservation._id}`
