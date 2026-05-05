@@ -35,12 +35,10 @@ router.post('/sendConfirmation', async (req: Request, res: Response) => {
       key: process.env.MAILGUN_API_KEY || process.env.API_KEY || '',
     })
     
-    const capitalizedName = 
-      reservation.name.charAt(0).toUpperCase() + 
-      reservation.name.slice(1).toLowerCase()
+    const capitalizedName = reservation.name.split(' ').map(el=> el[0].toUpperCase()+el.slice(1))
 
-    const baseUrl = process.env.APP_URL || 'https://health-and-taste.up.railway.app'
-    const magicLink = `${baseUrl}/edit/${reservation._id}`
+    const baseUrl = process.env.APP_URL
+    const magicLink = `${baseUrl}edit/${reservation._id}`
     // const magicLink = `http://localhost:5174/edit/${reservation._id}`
     
     // Send email

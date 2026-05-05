@@ -6,6 +6,8 @@ export default function FinalPage() {
   const location = useLocation()
   const state = location.state as FinalPageState | null
 
+  const name= state.name.split(' ').map(el=> el[0].toUpperCase()+el.slice(1))
+
   if (!state) {
     return (
       <div className="final-page">
@@ -34,7 +36,7 @@ export default function FinalPage() {
         <div className="final-detail__grid">
           <div className="final-detail__item">
             <span className="final-detail__key"><i className="fa-solid fa-user" /> Guest</span>
-            <span className="final-detail__val">{state.name}</span>
+            <span className="final-detail__val">{name}</span>
           </div>
           <div className="final-detail__item">
             <span className="final-detail__key"><i className="fa-solid fa-calendar-days" /> Date</span>
