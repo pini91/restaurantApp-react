@@ -148,7 +148,7 @@ export default function TablesPage() {
     const tableCapacity = Number(table.match(/\d+$/)?.[0] || 0)
     const isBusy = busyTables.includes(table)
     const isTooSmall = reservation && tableCapacity < reservation.partySize
-    const isTooBig = reservation && tableCapacity > reservation.partySize
+    const isTooBig = reservation && Math.abs(tableCapacity - reservation.partySize) > 1
     
     if (isBusy) return 'seat busy'
     if (isTooSmall) return 'seat too-small'
