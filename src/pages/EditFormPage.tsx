@@ -122,7 +122,7 @@ export default function EditFormPage() {
         <div className="resv-form">
 
           <div className="resv-form__header">
-            <span className="resv-form__label">Manage Booking</span>
+            <span className="resv-form__label">Manage Reservation</span>
             <h1 className="resv-form__title">Update Details</h1>
             <p className="resv-form__sub">Change your date, time, or party size below.</p>
           </div>

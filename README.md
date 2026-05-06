@@ -10,9 +10,23 @@ A sophisticated restaurant reservation system built with React and TypeScript. C
 
 ## | Desktop |
 
-| ![logIn](./screenshots/login.png) | 
-| ![logIn](./screenshots/login.png) | 
-| ![logIn](./screenshots/login.png) | 
+| ![main](./src/assets/imgs/screenshots/main.png) | 
+| ![main](./src/assets/imgs/screenshots/main1.png) | 
+| ![main](./src/assets/imgs/screenshots/main2.png) | 
+| ![main](./src/assets/imgs/screenshots/main3.png) | 
+| ![main](./src/assets/imgs/screenshots/main4.png) | 
+| ![menu](./src/assets/imgs/screenshots/menu.png) | 
+| ![dinner](./src/assets/imgs/screenshots/dinner.png) | 
+| ![gallery](./src/assets/imgs/screenshots/gallery.png) | 
+| ![location](./src/assets/imgs/screenshots/location.png) | 
+| ![form](./src/assets/imgs/screenshots/form.png) | 
+| ![tables](./src/assets/imgs/screenshots/tables.png) | 
+| ![tables](./src/assets/imgs/screenshots/tables1.png) | 
+| ![confirmation](./src/assets/imgs/screenshots/confirmation.png) | 
+| ![confirmation](./src/assets/imgs/screenshots/email.png) | 
+| ![edit](./src/assets/imgs/screenshots/edit.png) | 
+
+## | Mobile |
 
 
 
@@ -113,3 +127,8 @@ Did you know?
 National Household Survey 2020 -->
 
 This application addresses the growing demand for personalized dining experiences, allowing customers to choose their preferred seating location — just like they should on a luxury cruise ship.
+
+## Future Enhancements
+
+- [ ] Hide parameters from the URL for editing reservation
+- [ ] Improve admin feature for editing the tables
