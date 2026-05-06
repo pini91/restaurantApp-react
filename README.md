@@ -1,12 +1,22 @@
-# Health & Taste Restaurant 🍽️
+# Health & Taste Restaurant 
 
 A sophisticated restaurant reservation system built with React and TypeScript. Customers can browse the menu, select specific tables from an interactive floor plan, and manage reservations — all with a modern, brand-consistent UI.
 
-## 🌐 Live Application
+## Live Application
 
-**Main Site**: [https://health-and-taste.up.railway.app](https://health-and-taste.up.railway.app)
+**Main Site**: [health-and-taste-restaurant-react.up.railway.app](health-and-taste-restaurant-react.up.railway.app)
 
-## 📋 Features
+## 📱 Screenshots
+
+## | Desktop |
+
+| ![logIn](./screenshots/login.png) | 
+| ![logIn](./screenshots/login.png) | 
+| ![logIn](./screenshots/login.png) | 
+
+
+
+## Features
 
 ### Customer Features
 - **Interactive Menu**: Browse breakfast, lunch, and dinner menus with beautiful food imagery
@@ -23,7 +33,7 @@ A sophisticated restaurant reservation system built with React and TypeScript. C
 - **Cancel Reservations**: Cancel directly from the edit page
 - **Real-time Validation**: Prevents double-bookings and validates table capacity
 
-## 🔗 Important Links
+## Important Links
 
 ### Admin Access
 - **Admin Login**: [https://health-and-taste.up.railway.app/admin](https://health-and-taste.up.railway.app/admin)
@@ -33,13 +43,13 @@ A sophisticated restaurant reservation system built with React and TypeScript. C
 - **Edit Portal**: [https://health-and-taste.up.railway.app/edit](https://health-and-taste.up.railway.app/edit)
 - Or use the **magic link** sent to your email at the time of booking
 
-## 📧 Email Notifications
+## Email Notifications
 
 Powered by **Mailgun**. Upon confirming a reservation, users receive:
 - Full booking details (date, time, table, party size)
 - A personal magic link to edit or cancel — no account required
 
-## 🛠️ Technology Stack
+## Technology Stack
 
 | Layer | Technologies |
 |---|---|
@@ -53,7 +63,7 @@ Powered by **Mailgun**. Upon confirming a reservation, users receive:
 | **Deployment** | Railway (Docker) |
 | **CI/CD** | GitHub Actions |
 
-## 🚀 Key Features
+## Key Features
 
 ### Smart Table Management
 - Visual top-down floor plan with real-time availability
@@ -75,7 +85,7 @@ Powered by **Mailgun**. Upon confirming a reservation, users receive:
 - **CI**: TypeScript type-check, ESLint, and Vite build run on every push and pull request
 - **CD**: Automatic deploy to Railway on every merge to `main`
 
-## 📱 Pages & Navigation
+## Pages & Navigation
 
 | Route | Page |
 |---|---|
@@ -93,9 +103,9 @@ Powered by **Mailgun**. Upon confirming a reservation, users receive:
 | `/admin` | Admin login |
 | `/admin/dashboard` | Admin dashboard |
 
-## 🎯 Project Inspiration
+## Project Inspiration
 
-<!-- This project was born after a cruise famous for its food in the caribbean.
+<!-- This project was born after going on a cruise famous for its food in the caribbean.
 Because the experience is everything, and its not always about the food but the location and THE VIEW.
 
 Did you know?
@@ -103,100 +113,3 @@ Did you know?
 National Household Survey 2020 -->
 
 This application addresses the growing demand for personalized dining experiences, allowing customers to choose their preferred seating location — just like they should on a luxury cruise ship.
-
-## 🔧 Local Development
-
-```bash
-# Install dependencies
-npm install
-
-# Copy env vars and fill in your values
-cp .env.example .env
-
-# Start frontend + backend concurrently
-npm run start
-```
-
-The frontend runs on `http://localhost:5173` and the backend API on `http://localhost:3001`.
-
-### Docker
-
-```bash
-docker build -t restaurant-app .
-docker run -p 3001:3001 --env-file .env restaurant-app
-```
-
----
-
-*For support or inquiries, please contact the restaurant directly or use the admin portal for assistance.*
-
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```

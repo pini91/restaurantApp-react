@@ -84,6 +84,7 @@ export default function ReservationFormPage() {
     }
 
     if (name === 'date') refreshHours(value)
+      
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
