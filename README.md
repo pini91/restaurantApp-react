@@ -6,7 +6,7 @@ A sophisticated restaurant reservation system built with React and TypeScript. C
 
 **Main Site**: [health-and-taste-restaurant-react.up.railway.app](health-and-taste-restaurant-react.up.railway.app)
 
-## 📱 Screenshots
+## Screenshots
 
 ## | Desktop |
 
@@ -17,18 +17,29 @@ A sophisticated restaurant reservation system built with React and TypeScript. C
 | ![main](./src/assets/imgs/screenshots/main4.png) | 
 | ![menu](./src/assets/imgs/screenshots/menu.png) | 
 | ![dinner](./src/assets/imgs/screenshots/dinner.png) | 
+| ![menu-modal](./src/assets/imgs/screenshots/menu-modal.png) | 
 | ![gallery](./src/assets/imgs/screenshots/gallery.png) | 
 | ![location](./src/assets/imgs/screenshots/location.png) | 
 | ![form](./src/assets/imgs/screenshots/form.png) | 
 | ![tables](./src/assets/imgs/screenshots/tables.png) | 
 | ![tables](./src/assets/imgs/screenshots/tables1.png) | 
 | ![confirmation](./src/assets/imgs/screenshots/confirmation.png) | 
-| ![confirmation](./src/assets/imgs/screenshots/email.png) | 
+| ![email-confirmation](./src/assets/imgs/screenshots/email.png) | 
 | ![edit](./src/assets/imgs/screenshots/edit.png) | 
+| ![editReservation](./src/assets/imgs/screenshots/editReservation.png) | 
 
 ## | Mobile |
-
-
+| ![main-mobile](./src/assets/imgs/screenshots/main-mobile.png) | 
+| ![menu-mobile](./src/assets/imgs/screenshots/menu-mobile.png) | 
+| ![lunch-mobile](./src/assets/imgs/screenshots/lunch-mobile.png) | 
+| ![gallery-mobile](./src/assets/imgs/screenshots/gallery-mobile.png) | 
+| ![location-mobile](./src/assets/imgs/screenshots/location-mobile.png) | 
+| ![form-mobile](./src/assets/imgs/screenshots/form-mobile.png) | 
+| ![tables-mobile](./src/assets/imgs/screenshots/tables-mobile.png) | 
+| ![confirmation-mobile](./src/assets/imgs/screenshots/confirmation-mobile.png) | 
+| ![edit-mobile](./src/assets/imgs/screenshots/edit-mobile.png) | 
+| ![editReservation-mobile](./src/assets/imgs/screenshots/editReservation-mobile.png) | 
+| ![editTable-mobile](./src/assets/imgs/screenshots/editTable-mobile.png) | 
 
 ## Features
 
