@@ -1,6 +1,6 @@
 # Health & Taste Restaurant 
 
-A sophisticated restaurant reservation system built with React and TypeScript. Customers can browse the menu, select specific tables from an interactive floor plan, and manage reservations — all with a modern, brand-consistent UI.
+A sophisticated restaurant reservation system built with React and TypeScript. Customers can browse the menu, select specific tables from an interactive floor plan, and manage reservations, all with a modern, brand consistent UI.
 
 ## Live Application
 
